@@ -19,7 +19,7 @@ function LoginPage() {
             <BotaoAuth text="login" />
             <OpcaoAuth />
             <p className="alternate-loginAndRegister">
-                Não possui conta? <Link to='' className="alternate-auth">Cadastre-se</Link>. 
+                Não possui conta? <Link to='/auth/cadastro' className="alternate-auth">Cadastre-se</Link>. 
             </p>
         </BackAuth>
     )

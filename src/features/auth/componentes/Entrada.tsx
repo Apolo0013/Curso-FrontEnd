@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 import './Entrada.scss'
 //Imagens svg
 import ImgEmail from '../assets/ico/ico-email.svg'
@@ -42,15 +42,25 @@ function Entrada({ label, inputType }: Props) {
     const [StateSenha, SetStateSenha] = useState<boolean>(false)
     //manipualado da opacidade do viewsenha
     const [SenhaViewOpacity, SetSenhaViewOpacity] = useState<0 | 1>(0)
+    //Id unico para cada input. Uso semantico  e autofill
+    const idinput: string = useId()
 
     return (
         <div className="conteiner-entrada">
             {/*o placeholder pensonalizador*/}
-            <label htmlFor={inputType} id={inputType}
+            <label htmlFor={idinput}
                 className="placeholder-entrada"
                 style={{
                     top: ph,
                     //color: ph == '0%' ? '#3f75e2' : "#aeaeae"
+                }}
+
+                //events
+                onClick={() => {
+                    //esse click é responsavel por imitar o focus, caso o usuario tenha clicado em cima do placeholder
+                    if (!RefInput.current) return
+                    RefInput.current.focus()
+                    onFocus()
                 }}
             >
                 <img
@@ -61,8 +71,8 @@ function Entrada({ label, inputType }: Props) {
             </label>
             {/*O Input ondem vai receber a entrada*/}
             <input
-                id={inputType}
-                name={inputType}
+                id={idinput}
+                name={idinput}
                 required
                 //
                 placeholder={""}
