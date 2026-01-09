@@ -1,0 +1,71 @@
+//aqui ondem vai fica a maior parte do componentes selecionado ao auth
+
+@use '../../../styles/global.scss' as *;
+
+.conteiner-backauth {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center bottom,#101E39 0%, #090909 70%, #090909 100%);
+
+    .conteiner-auth { // conteiner ondem fica as entradas.
+        background: 
+            radial-gradient(circle at 90% -10%, rgba(255, 255, 255, 0.302) 0%, transparent 30%, transparent 100%),
+            radial-gradient(circle at 10% -20%, rgba(255, 255, 255, 0.302) 0%, transparent 30%, transparent 100%),
+            radial-gradient(circle at center left, #101E39 0%, transparent 30%, transparent 100%),
+            #111010
+            ;
+        min-width: 500px;
+        height: auto;
+        border-radius: 25px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: rem(40);
+        padding-bottom: rem(40);
+
+        //filhos
+
+        .auth-maintitle {
+            margin-top: 5%;
+            font-weight: 500;
+            font-size: rem(45);
+            color: white;
+        }
+
+        .auth-p {
+            margin-top: rem(20);
+            color: rgb(221, 221, 221);
+            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+        }
+
+        .auth-form {
+            margin-top: rem(40);
+            display: flex;
+            flex-direction: column;
+            gap: rem(20);
+            width: 90%;
+            height: auto;
+        }
+
+        //o pequeno texto em baixo que troca para login ou registrar.]
+        .alternate-loginAndRegister {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: rem(4);
+            margin-top: rem(20);
+            width: 100%;
+            height: auto;
+            color: #8b8b8b;
+
+            .alternate-auth {
+                color: #598ac9;
+            }
+        }
+    }
+}

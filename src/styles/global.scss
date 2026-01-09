@@ -1,0 +1,10 @@
+//funcao que tranforma px em rem
+@function rem($px, $base: 16) {
+  @return ($px / $base) * 1rem;
+}
+
+//sem border e outline
+button, fieldset, input {
+    border: 0;
+    outline: 0;
+}

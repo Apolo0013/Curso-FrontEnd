@@ -1,0 +1,69 @@
+@use '../../../styles/global.scss' as *;
+
+
+.conteiner-entrada {
+    all: unset; // retirando o style padrao
+    box-sizing: border-box;
+
+    height: rem(50);
+    background: #151416;
+    border-radius: 20px;    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 3%;
+    position: relative;
+    
+    //*{border: 1px solid red;}
+    
+    .placeholder-entrada {
+        position: absolute;
+        left: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: rem(3);
+        border-radius: 5px;
+        width: auto;
+        height: 50%;
+        background: #151416;
+        color: #aeaeae;
+        transition: top 0.2s ease-in-out;
+        //centralizando ele
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(8);
+
+        //imagem dentro do placeholder
+        .auth-ph-img {
+            aspect-ratio: 1 / 1;
+            height: 100%;
+        }
+        //paragrafo dentro do placeholder
+        .auth-ph-label {
+            height: 100%;
+            display: flex;
+            font-size: rem(15);
+            align-items: center;
+        }
+    }
+
+    .entrada-input {
+        padding: rem(5);
+        min-width: 0;
+        width: 90%;
+        height: 70%;
+        font-family: "Sora";
+        font-size: rem(16);
+        background: transparent;
+        color: white;
+    }
+
+    .auth-show-senha {
+        transition: opacity 0.3s ease;
+        margin-left: rem(5);
+        height: 55%;
+        aspect-ratio: 1 / 1;
+    }
+}
