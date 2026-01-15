@@ -2,13 +2,14 @@ import './BotaoAuth.scss'
 
 //Props
 type Props = {
-    text: string
+    text: string,
+    onClick?: () => void
 }
 
-function BotaoAuth({text}: Props) {
+function BotaoAuth({text, onClick}: Props) {
     return (
         <div className="auth-botao-enter" role='group' aria-label="Botao de autenticacao">
-            <button>{text}</button>
+            <button onClick={onClick}>{text}</button>
         </div>
     )
 }

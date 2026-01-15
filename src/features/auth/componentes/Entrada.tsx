@@ -1,26 +1,33 @@
-import { useId, useRef, useState } from 'react'
+import { useId, useRef, useState, type Dispatch, type SetStateAction } from 'react'
 import './Entrada.scss'
 //Imagens svg
 import ImgEmail from '../assets/ico/ico-email.svg'
 import ImgSenha from '../assets/ico/ico-senha.svg'
+import ImgText from '../assets/ico/ico-text.svg'
 import ImgOlhoOn from '../assets/ico/ico-olho.svg'
 import ImgOlhoOff from '../assets/ico/ico-olho-fechado.svg'
+//type
+import type {ClassWarnEntrada} from '../hooks/hook.type'
 //
 type typeInput = 'text' | "password" | 'email'
 
 const ICONS: Record<typeInput, string> = {
     password: ImgSenha,
     email: ImgEmail,
-    text: ImgEmail
+    text: ImgText
 }
 
 //Props
 type Props = {
     label: string,
-    inputType: typeInput
+    inputType: typeInput,
+    SetValue: Dispatch<SetStateAction<string>>,//State que pegar o valor da entrada,
+    //State da class da entrada
+    StateClass: ClassWarnEntrada,
+    SetClass: Dispatch<SetStateAction<ClassWarnEntrada>>
 }
 
-function Entrada({ label, inputType }: Props) {
+function Entrada({ label, inputType, SetValue, StateClass, SetClass}: Props) {
     //conteudo da entrada.
     const RefInput = useRef<HTMLInputElement | null>(null)
     //state responsavel pelo pleceholder
@@ -31,7 +38,7 @@ function Entrada({ label, inputType }: Props) {
     }
 
     function onBlur() {
-        if (!RefInput.current || RefInput.current.value.length > 1) return // retorna, quando: o ref for nulo e o conteudo estive com conteudo dentro.
+        if (!RefInput.current || RefInput.current.value.length >= 1) return // retorna, quando: o ref for nulo e o conteudo estive com conteudo dentro.
         SetSenhaViewOpacity(0) // esconder o senha view
         Setph('50%')
     }
@@ -46,7 +53,9 @@ function Entrada({ label, inputType }: Props) {
     const idinput: string = useId()
 
     return (
-        <div className="conteiner-entrada">
+        <div className={"conteiner-entrada " + StateClass}
+            onAnimationEnd={() => SetClass('')}
+        >
             {/*o placeholder pensonalizador*/}
             <label htmlFor={idinput}
                 className="placeholder-entrada"
@@ -87,6 +96,8 @@ function Entrada({ label, inputType }: Props) {
                 //events
                 onFocusCapture={onFocus}
                 onBlurCapture={onBlur}
+                //Pegando o valor do input/entrada via setState
+                onChange={(e) => SetValue(e.target.value)}
                 //Ref
                 ref={RefInput}
             />
