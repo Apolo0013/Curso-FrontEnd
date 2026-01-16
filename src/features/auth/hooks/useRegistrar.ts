@@ -4,73 +4,76 @@ import { toast } from "react-toastify";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 //type
-import type {Paramentry, Returnentry, ClassWarnEntrada} from "./hook.type"
+import type {ReturnFNValideEntrada, ParamEntryRegister,ClassWarnEntrada} from "./hook.type"
 
 //obterNamePage.tsx e registrarpage.tsx, compatilhar esse mesmo hook.
 function useRegistrar() {
-    function TrataEntradas(entry: Paramentry): Returnentry {
+    function TrataEntradasRegistrar(entry: ParamEntryRegister): ReturnFNValideEntrada  {
         //regex do email
         const regexEmail: RegExp = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
-        //Verificando o email
-        if (entry.email.length == 0 || !regexEmail.test(entry.email)) {
+        //Verificando o email, valido email
+        if (!regexEmail.test(entry.email)) {
             SetClassEmail('auth-entrada-warn') // error na entrada / UI
-            return 'invalidoEmail'
+            return {
+                sucesso: false,
+                msg: "Informe um endereço de e-mail válido."
+            }
         }
-            //quando senha estive vazia
+        //Email vazio
+        if (entry.email.length == 0) {
+            return {
+                sucesso: false,
+                msg: 'O campo email é obrigatório.'
+            }
+        }
+        //quando senha estive vazia
         else if (entry.senha.length == 0) {
             SetClassSenha('auth-entrada-warn')
-            return 'senhaVazia'
+            return {
+                sucesso: false,
+                msg: "O campo senha é obrigatório."
+            }
         }
         else if (entry.confirmaSenha.length == 0) { 
             SetClassConfirmaSenha('auth-entrada-warn')
-            return 'senhaConfirmaVazia'
+            return {
+                sucesso: false,
+                msg: "Confirme a senha para continuar."
+            }
         }
         //quando as senha nao sao igual
         else if (entry.confirmaSenha != entry.senha) {
             //add warn nas duas entradas
             SetClassSenha('auth-entrada-warn')
             SetClassConfirmaSenha('auth-entrada-warn')
-            return 'senhaNaoIguais'
+            return {
+                sucesso: false,
+                msg: "As senhas informadas não coincidem."
+            }
         }
         //deu certo
-        else return 'sucesso'
+        else return {
+            sucesso: true,
+            msg: ''
+        }
     }
 
     //funcao handler click para o botao auth do page registrar.tsx
     function ClickRegister() {
-        const result: Returnentry = TrataEntradas({
+        const {msg, sucesso}: ReturnFNValideEntrada  = TrataEntradasRegistrar({
             email: Email, 
             senha: Senha,
             confirmaSenha: ConfirmaSenha
         })
-        console.log(result)
         //caso de tudo certo.
-        if (result == 'sucesso') {
+        if (sucesso) {
             nv('/auth/obternome', {
                 state: { isRegister: true }
             })
             return
         }
-        //notifica ao usuario o resultado ao aperta o botao(error)
-        let msgNoti: string = ""
-        switch (result) {
-            case "invalidoEmail":
-                msgNoti = "Informe um endereço de e-mail válido."
-                break
-
-            case "senhaConfirmaVazia":
-                msgNoti = "Confirme a senha para continuar."
-                break
-
-            case "senhaNaoIguais":
-                msgNoti = "As senhas informadas não coincidem."
-                break
-
-            case "senhaVazia":
-                msgNoti = "O campo senha é obrigatório."
-                break
-            }
-        toast.error(msgNoti) // notificacao de error.
+        //senao vai manda um error pro user
+        else toast.error(msg)
     }
 
     //funcao handler click para o botao auth do page obternome.tsx

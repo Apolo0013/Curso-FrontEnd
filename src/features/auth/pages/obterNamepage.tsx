@@ -3,6 +3,7 @@ import Entrada from "../componentes/Entrada";
 import BotaoAuth from "../componentes/BotaoAuth";
 import { Navigate, useLocation } from "react-router-dom";
 import useRegistrar from "../hooks/useRegistrar";
+import useRegistrarService from "../services/useRegistrarAuth";
 
 function ObterNome() {
     //hook
@@ -12,6 +13,9 @@ function ObterNome() {
         SetClassNome,
         ClickObterNome
     } = useRegistrar()
+
+    const {mtRegister} = useRegistrarService()
+
     //Pegar nome
     const {state}: { state: { isRegister: boolean } } = useLocation()
     //if (false || !state?.isRegister) return <Navigate to='/auth/cadastro' replace />
@@ -33,7 +37,14 @@ function ObterNome() {
                     StateClass={ClassNome}
                 />
             </form>
-            <BotaoAuth text="Confirma" onClick={ClickObterNome}/>
+            <BotaoAuth text="Confirma"
+                onClick={async () => await mtRegister.mutateAsync({
+                    email: "apolo123@gmail.com",
+                    senha: "teu cu",
+                    nome: 'hilter'
+                })}
+                //onClick={ClickObterNome}
+            />
         </BackAuth >
     )
 }

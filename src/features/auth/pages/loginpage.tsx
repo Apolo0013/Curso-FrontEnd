@@ -5,13 +5,20 @@ import Entrada from "../componentes/Entrada"
 import OpcaoAuth from "../componentes/OpcaoAuth"
 //Rota
 import { Link } from "react-router-dom"
-//React metedos
-import { useState } from "react"
+//hook
+import useLogin from "../hooks/useLogin"
 
 function LoginPage() {
-    //Valor das Entradas
-    const [Email, SetEmail] = useState<string>('') // Email
-    const [Senha, SetSenha] = useState<string>('') // Senha
+    //hook
+    const {
+        SetEmail,
+        SetSenha,
+        ClassEmail,
+        SetClassEmail,
+        ClassSenha,
+        SetClassSenha,
+        ClickLogin
+    } = useLogin()
     return (
         <BackAuth>
             <h1 className="auth-maintitle">Login</h1>
@@ -26,14 +33,20 @@ function LoginPage() {
                     inputType="email" // tipo do input
                     label="Email" // label ou placeholder
                     SetValue={SetEmail} // SetState para obter o valor do input
+                    //Class
+                    SetClass={SetClassEmail}
+                    StateClass={ClassEmail}
                 />
                 <Entrada
                     inputType="password"
                     label="Senha"
                     SetValue={SetSenha}
+                    //Class
+                    SetClass={SetClassSenha}
+                    StateClass={ClassSenha}
                 />
             </form>
-            <BotaoAuth text="login" />
+            <BotaoAuth text="login" onClick={ClickLogin}/>
             <OpcaoAuth />
             <p className="alternate-loginAndRegister">
                 Não possui conta? <Link to='/auth/cadastro' className="alternate-auth">Cadastre-se</Link>. 

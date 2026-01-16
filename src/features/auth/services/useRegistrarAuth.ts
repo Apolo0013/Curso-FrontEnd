@@ -1,0 +1,22 @@
+import { useMutation } from "@tanstack/react-query"
+//Service
+import { APIRegistrar } from './auth.service'
+//Type
+import type {TRegistrarError, TRegistrarParam, TRegistrarResponse } from './service.type'
+
+function useRegistrarService() {
+    //mutation
+    const mtRegister = useMutation<TRegistrarResponse, TRegistrarError, TRegistrarParam>({
+        mutationFn: APIRegistrar,
+        onSuccess: (data) => {
+            console.log(data)
+        },
+        onError: () => {console.log('deu error o')}
+    })
+
+    return {
+        mtRegister
+    }
+}
+
+export default useRegistrarService
