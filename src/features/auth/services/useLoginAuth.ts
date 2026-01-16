@@ -5,7 +5,7 @@ import { APILogin } from './auth.service'
 import type {TLoginError, TLoginResponse, TLoginParam} from './service.type'
 
 function useLoginService() {
-    const mtLogin = useMutation<TLoginResponse | null, TLoginError, TLoginParam>({
+    const mtLogin = useMutation<TLoginResponse, TLoginError, TLoginParam>({
         mutationFn: APILogin
     })
     return {

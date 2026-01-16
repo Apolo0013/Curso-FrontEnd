@@ -1,6 +1,8 @@
 //Resposta, Error e Paramtro do APIRegistrar
-export type TRegistrarResponse = // vindo do Common
-    ''
+export type TRegistrarResponse = {
+    sucesso: boolean,
+    code: string
+}
 
 export type TRegistrarError = null
 
@@ -11,9 +13,10 @@ export type TRegistrarParam = {
 }
 
 //Resposta Error e Parametro APILogin
-export type TLoginResponse =
-    'USUARIO NAO ENCONTRADO' |
-    'CONTA LOGADA'
+export type TLoginResponse = {
+    sucesso: boolean,
+    code: string
+}
 
 export type TLoginError = null
 

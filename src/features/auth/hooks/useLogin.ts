@@ -4,6 +4,9 @@ import type {ClassWarnEntrada, ParamTrataEntryLogin, ReturnFNValideEntrada} from
 import { toast } from "react-toastify"
 //Service
 import useLoginService from "../services/useLoginAuth"
+//Mensagem E Common
+import {authMessages} from '../../../shared/mensagem/auth.mensagem'
+import { CodeCommonAuth, type TCodeCommonAuth} from "../../../shared/common/auth.common";
 
 function useLogin() {
     async function TrataEntryLogin(data: ParamTrataEntryLogin): Promise<ReturnFNValideEntrada> {
@@ -32,24 +35,34 @@ function useLogin() {
             }
         }
         else { 
-            // aqui ja sabeemos que ta tudo certo com as entradas.
+            // aqui ja sabemos que ta tudo certo com as entradas.
             // vamos fazer contato com backend, e ver ele retorna ok, em questao de autenticado.
-            const result = await mtLogin.mutateAsync({
-                email: data.email,
-                senha: data.senha
-            })
-            if (result == 'CONTA LOGADA') return {
-                sucesso: true,
-                msg: ""
-            } // deu certo, usuario existi
-            else {
-                //usuario nao existi
-                //add warn nas duas entradas
-                SetClassEmail('auth-entrada-warn')
-                SetClassSenha('auth-entrada-warn')
+            try {
+                const {code, sucesso} = await mtLogin.mutateAsync({
+                    email: data.email,
+                    senha: data.senha
+                })
+
+                if (sucesso) return { // deu certo, usuario existi
+                    sucesso: true,
+                    msg: ""
+                } 
+                else {
+                    //usuario nao existi
+                    //add warn nas duas entradas
+                    SetClassEmail('auth-entrada-warn')
+                    SetClassSenha('auth-entrada-warn')
+                    return {
+                        sucesso: false,
+                        msg: authMessages[CodeCommonAuth[code as keyof TCodeCommonAuth]]
+                    }
+                }
+            }
+            //caso de errado com requsicao
+            catch {
                 return {
                     sucesso: false,
-                    msg: 'Usuário não encontrado.'
+                    msg: authMessages[CodeCommonAuth.ERROR_INTERNO_SISTEMA]
                 }
             }
         }

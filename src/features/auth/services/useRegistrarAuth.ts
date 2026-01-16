@@ -8,9 +8,6 @@ function useRegistrarService() {
     //mutation
     const mtRegister = useMutation<TRegistrarResponse, TRegistrarError, TRegistrarParam>({
         mutationFn: APIRegistrar,
-        onSuccess: (data) => {
-            console.log(data)
-        },
         onError: () => {console.log('deu error o')}
     })
 

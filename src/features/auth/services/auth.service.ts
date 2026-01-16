@@ -6,7 +6,7 @@ import type {
     TLoginResponse
 } from './service.type'
 
-export async function APILogin(data: TLoginParam): Promise<TLoginResponse | null> {
+export async function APILogin(data: TLoginParam): Promise<TLoginResponse> {
     try {
         const res = await fetch('http://localhost:5182/auth/Login', {
             method: "POST",
@@ -16,7 +16,7 @@ export async function APILogin(data: TLoginParam): Promise<TLoginResponse | null
             },
             body: JSON.stringify(data)
         })
-        return await res.text() as TLoginResponse
+        return await res.json() as TLoginResponse
     }
     catch (error) {
         console.log(error)
@@ -24,7 +24,7 @@ export async function APILogin(data: TLoginParam): Promise<TLoginResponse | null
     }
 }
 
-export async function APIRegistrar(data: TRegistrarParam): Promise<TRegistrarResponse | null> {
+export async function APIRegistrar(data: TRegistrarParam): Promise<TRegistrarResponse> {
     try {
         const res = await fetch("http://localhost:5182/auth/Registrar", {
             method: "POST",
@@ -35,7 +35,7 @@ export async function APIRegistrar(data: TRegistrarParam): Promise<TRegistrarRes
             body: JSON.stringify(data)
         })
         //return await res.text()
-        return await res.text() as TRegistrarResponse
+        return await res.json() as TRegistrarResponse
     }
     catch (error) {
         console.log(error)

@@ -4,7 +4,12 @@ import { toast } from "react-toastify";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 //type
-import type {ReturnFNValideEntrada, ParamEntryRegister,ClassWarnEntrada} from "./hook.type"
+import type { ReturnFNValideEntrada, ParamEntryRegister, ClassWarnEntrada } from "./hook.type"
+//Service
+import useRegistrarService from "../services/useRegistrarAuth";
+//Mensagem E Common
+import {authMessages} from '../../../shared/mensagem/auth.mensagem'
+import { CodeCommonAuth, type TCodeCommonAuth} from "../../../shared/common/auth.common";
 
 //obterNamePage.tsx e registrarpage.tsx, compatilhar esse mesmo hook.
 function useRegistrar() {
@@ -34,6 +39,7 @@ function useRegistrar() {
                 msg: "O campo senha é obrigatório."
             }
         }
+        //caso senha confirme estive vazio
         else if (entry.confirmaSenha.length == 0) { 
             SetClassConfirmaSenha('auth-entrada-warn')
             return {
@@ -77,7 +83,7 @@ function useRegistrar() {
     }
 
     //funcao handler click para o botao auth do page obternome.tsx
-    function ClickObterNome() {
+    async function ClickObterNome() {
         //verificacao rapida no nome.
         // nao pode esta vazio
         // minimo 10 caracatere
@@ -99,12 +105,26 @@ function useRegistrar() {
         }
         //deu certo
         else error = false // nao deu error.
-
-        //mensagem obtida
+        // !Se error for true, vamos manda uma notificacao.
+        // !Senao, vamos contata o backend para registrar o usuario.
+        //Nao houve error?
         if (!error) {
-            console.log('deu certo.')
+            const { code, sucesso } = await mtRegister.mutateAsync({
+                email: Email,
+                senha: Senha,
+                nome: Nome
+            })
+            if (sucesso) {
+                console.log('registrado!')
+            }
+            //mensagem de error
+            else {
+                const msg: string = authMessages[CodeCommonAuth[code as keyof TCodeCommonAuth]]
+                toast.error(msg)
+            }
+            
         }
-        //mandando msg de error
+        //houve error.
         else {
             SetClassNome('auth-entrada-warn') // mandando warn na entrada
             toast.error(msgNoti) // mandando notificacao
@@ -126,6 +146,8 @@ function useRegistrar() {
     //State para obter o nome
     const [Nome, SetNome] = useState<string>("")
     const [ClassNome, SetClassNome] = useState<ClassWarnEntrada>('')
+    //Hook Service
+    const {mtRegister} = useRegistrarService()
 
     return {
         ClickObterNome,
