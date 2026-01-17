@@ -8,7 +8,6 @@ import { Route, Routes } from 'react-router-dom'
 //Paginas
 import LoginPage from '../features/auth/pages/loginpage'
 import RegistrarPage from '../features/auth/pages/registrarpage'
-import ObterNome from '../features/auth/pages/obterNamepage'
 
 function App() {
 
@@ -18,7 +17,6 @@ function App() {
             <Routes>
                 <Route path='/auth/login' element={<LoginPage />}></Route>
                 <Route path='/auth/cadastro' element={<RegistrarPage />}></Route>
-                <Route path='/auth/obternome' element={<ObterNome />} />
             </Routes>
         </main>
     )

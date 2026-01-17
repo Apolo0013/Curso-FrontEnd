@@ -12,8 +12,11 @@ function RegistrarPage() {
     //hook
     const {
         ClickRegister,
+        //Confirma email
         SetConfirmaSenha,
+        //Senha
         SetSenha,
+        //Email
         SetEmail,
         //Class das entradas. (warn)
         ClassEmail,
@@ -21,7 +24,11 @@ function RegistrarPage() {
         ClassSenha,
         SetClassSenha,
         ClassConfirmaSenha,
-        SetClassConfirmaSenha
+        SetClassConfirmaSenha,
+        //Obter nome
+        SetNome,
+        ClassNome,
+        SetClassNome,
     } = useRegistrar()
     return (
         <BackAuth>
@@ -58,6 +65,14 @@ function RegistrarPage() {
                     SetClass={SetClassConfirmaSenha}
                     StateClass={ClassConfirmaSenha}
                     key="2" />
+                <Entrada
+                    label="Nome"
+                    inputType="text"
+                    SetValue={SetNome}
+                    //set e state class
+                    SetClass={SetClassNome}
+                    StateClass={ClassNome}
+                />
             </form>
             <BotaoAuth text="Cadastrar" onClick={ClickRegister}/>
             <OpcaoAuth />

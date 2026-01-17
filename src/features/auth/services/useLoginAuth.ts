@@ -6,7 +6,7 @@ import type {TLoginError, TLoginResponse, TLoginParam} from './service.type'
 
 function useLoginService() {
     const mtLogin = useMutation<TLoginResponse, TLoginError, TLoginParam>({
-        mutationFn: APILogin
+        mutationFn: APILogin,
     })
     return {
         mtLogin

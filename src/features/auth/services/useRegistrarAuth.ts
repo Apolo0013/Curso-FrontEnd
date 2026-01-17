@@ -7,8 +7,7 @@ import type {TRegistrarError, TRegistrarParam, TRegistrarResponse } from './serv
 function useRegistrarService() {
     //mutation
     const mtRegister = useMutation<TRegistrarResponse, TRegistrarError, TRegistrarParam>({
-        mutationFn: APIRegistrar,
-        onError: () => {console.log('deu error o')}
+        mutationFn: APIRegistrar
     })
 
     return {

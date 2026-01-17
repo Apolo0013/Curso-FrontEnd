@@ -43,7 +43,9 @@ export async function APIRegistrar(data: TRegistrarParam): Promise<TRegistrarRes
     }
 }
 
-
+//Essa rota, ele vai retorna se o email é valido ou nao
+// Email deve existi
+// Email nao deve esta em uso.
 export async function APIValideEmail(email: string) {
     try {
         const res = await fetch("", {

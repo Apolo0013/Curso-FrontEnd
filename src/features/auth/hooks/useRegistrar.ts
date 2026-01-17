@@ -2,137 +2,83 @@
 import { toast } from "react-toastify";
 //react
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
 //type
-import type { ReturnFNValideEntrada, ParamEntryRegister, ClassWarnEntrada } from "./hook.type"
+import type { ReturnFNValideEntrada, ClassWarnEntrada, TuseRegistrar} from "./hook.type"
 //Service
 import useRegistrarService from "../services/useRegistrarAuth";
 //Mensagem E Common
-import {authMessages} from '../../../shared/mensagem/auth.mensagem'
-import { CodeCommonAuth, type TCodeCommonAuth} from "../../../shared/common/auth.common";
+import {authMessagesBackEnd, authEntryMessages} from '../../../shared/mensagem/auth.mensagem'
+import { CodeCommonAuth, type TCodeCommonAuth } from "../../../shared/common/auth.common";
+//Funcoes valida
+import {TrataEntradasRegistrar} from '../valida/valida.registrar'
 
 //obterNamePage.tsx e registrarpage.tsx, compatilhar esse mesmo hook.
-function useRegistrar() {
-    function TrataEntradasRegistrar(entry: ParamEntryRegister): ReturnFNValideEntrada  {
-        //regex do email
-        const regexEmail: RegExp = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
-        //Verificando o email, valido email
-        if (!regexEmail.test(entry.email)) {
-            SetClassEmail('auth-entrada-warn') // error na entrada / UI
-            return {
-                sucesso: false,
-                msg: "Informe um endereço de e-mail válido."
-            }
-        }
-        //Email vazio
-        if (entry.email.length == 0) {
-            return {
-                sucesso: false,
-                msg: 'O campo email é obrigatório.'
-            }
-        }
-        //quando senha estive vazia
-        else if (entry.senha.length == 0) {
-            SetClassSenha('auth-entrada-warn')
-            return {
-                sucesso: false,
-                msg: "O campo senha é obrigatório."
-            }
-        }
-        //caso senha confirme estive vazio
-        else if (entry.confirmaSenha.length == 0) { 
-            SetClassConfirmaSenha('auth-entrada-warn')
-            return {
-                sucesso: false,
-                msg: "Confirme a senha para continuar."
-            }
-        }
-        //quando as senha nao sao igual
-        else if (entry.confirmaSenha != entry.senha) {
-            //add warn nas duas entradas
-            SetClassSenha('auth-entrada-warn')
-            SetClassConfirmaSenha('auth-entrada-warn')
-            return {
-                sucesso: false,
-                msg: "As senhas informadas não coincidem."
-            }
-        }
-        //deu certo
-        else return {
-            sucesso: true,
-            msg: ''
-        }
-    }
-
+function useRegistrar(): TuseRegistrar {
     //funcao handler click para o botao auth do page registrar.tsx
-    function ClickRegister() {
-        const {msg, sucesso}: ReturnFNValideEntrada  = TrataEntradasRegistrar({
+    async function ClickRegister() {
+        const {code, sucesso}: ReturnFNValideEntrada  = TrataEntradasRegistrar({
             email: Email, 
             senha: Senha,
-            confirmaSenha: ConfirmaSenha
+            confirmaSenha: ConfirmaSenha,
+            nome: Nome
         })
         //caso de tudo certo.
-        if (sucesso) {
-            nv('/auth/obternome', {
-                state: { isRegister: true }
-            })
-            return
-        }
-        //senao vai manda um error pro user
-        else toast.error(msg)
-    }
-
-    //funcao handler click para o botao auth do page obternome.tsx
-    async function ClickObterNome() {
-        //verificacao rapida no nome.
-        // nao pode esta vazio
-        // minimo 10 caracatere
-        // maximo 30 caractere
-        const lenname = Nome.length // o tamanhho do Nome.
-        let msgNoti: string = "" // vai guardar a messagem 
-        let error: boolean = true // responsavel por fala se deu error ou nao
-        //vazio
-        if (lenname == 0) {    
-            msgNoti = "O nome é obrigatório."
-        }
-        //menor do que 10
-        else if (lenname < 10) {
-            msgNoti = "O nome deve ter no mínimo 10 caracteres."   
-        }
-        //mairo do que 30
-        else if (lenname > 30) {
-            msgNoti = "O nome deve ter no máximo 30 caracteres."
-        }
-        //deu certo
-        else error = false // nao deu error.
-        // !Se error for true, vamos manda uma notificacao.
-        // !Senao, vamos contata o backend para registrar o usuario.
-        //Nao houve error?
-        if (!error) {
-            const { code, sucesso } = await mtRegister.mutateAsync({
-                email: Email,
-                senha: Senha,
-                nome: Nome
-            })
-            if (sucesso) {
-                console.log('registrado!')
+        if (sucesso) {  
+            try { 
+                //fazendo contato com backend, registrar o usuario
+                const {sucesso, code} = await mtRegister.mutateAsync({
+                    email: Email,
+                    senha: Senha,
+                    nome: Nome
+                })
+                if (sucesso) {
+                    console.log('registrado!')
+                }
+                //mensagem de error
+                else {
+                    const msg: string = authMessagesBackEnd[CodeCommonAuth[code as keyof TCodeCommonAuth]]
+                    toast.error(msg)
+                }
             }
-            //mensagem de error
-            else {
-                const msg: string = authMessages[CodeCommonAuth[code as keyof TCodeCommonAuth]]
-                toast.error(msg)
+            catch { // é chamado quando algo de errado na requisicao
+                const msg: string = authMessagesBackEnd.ERROR_INTERNO_SISTEMA
+                toast.warn(msg)
             }
-            
         }
-        //houve error.
+        //senao vai manda um error pro user 
         else {
-            SetClassNome('auth-entrada-warn') // mandando warn na entrada
-            toast.error(msgNoti) // mandando notificacao
+            //mandando notificao
+            toast.error(authEntryMessages[code!])
+            //ativando warn nas entradas
+            switch (code) {
+                case 'ERROR_EMAIL_INVALIDO':
+                    SetClassEmail('auth-entrada-warn')
+                    break
+                case 'ERROR_EMAIL_VAZIO':
+                    SetClassEmail('auth-entrada-warn')
+                    break
+                case 'ERROR_NOME_CARACTERE_MAXIMO':
+                    SetClassNome('auth-entrada-warn')
+                    break
+                case 'ERROR_NOME_CARACTERE_MINIMO':
+                    SetClassNome('auth-entrada-warn')
+                    break
+                case 'ERROR_NOME_VAZIO':
+                    SetClassNome('auth-entrada-warn')
+                    break
+                case 'ERROR_SENHA_CONFIRMAR_VAZIO':
+                    SetClassConfirmaSenha('auth-entrada-warn')
+                    break
+                case 'ERROR_SENHA_NAO_IGUAIS':
+                    SetClassSenha('auth-entrada-warn')
+                    SetClassConfirmaSenha('auth-entrada-warn')
+                    break
+                case 'ERROR_SENHA_VAZIA':
+                    SetClassSenha('auth-entrada-warn')
+                    break
+            }
         }
     }
-
-
-    const nv = useNavigate()
 
     //Valores dos input do componentes Entrada.tsx
     const [Email, SetEmail] = useState<string>('apolonio123@gmail.co') // Email
@@ -150,7 +96,6 @@ function useRegistrar() {
     const {mtRegister} = useRegistrarService()
 
     return {
-        ClickObterNome,
         ClickRegister,
         SetEmail,
         SetSenha,
