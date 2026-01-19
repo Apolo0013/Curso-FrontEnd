@@ -17,7 +17,8 @@ function LoginPage() {
         SetClassEmail,
         ClassSenha,
         SetClassSenha,
-        ClickLogin
+        ClickLogin,
+        mtLogin
     } = useLogin()
     return (
         <BackAuth>
@@ -46,7 +47,10 @@ function LoginPage() {
                     StateClass={ClassSenha}
                 />
             </form>
-            <BotaoAuth text="login" onClick={ClickLogin}/>
+            <BotaoAuth text="login"
+                onClick={ClickLogin}
+                isPending={mtLogin.isPending}
+            />
             <OpcaoAuth />
             <p className="alternate-loginAndRegister">
                 Não possui conta? <Link to='/auth/cadastro' className="alternate-auth">Cadastre-se</Link>. 

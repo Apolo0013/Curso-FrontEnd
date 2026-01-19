@@ -1,17 +1,6 @@
 //Essa common sao relacionadas ao backend
-//tipagem do common
-export type TCodeCommonAuth = {
-    CONTA_ENCONTRADA: 'CONTA_ENCONTRADA',
-    CONTA_REGISTRADA: 'CONTA_REGISTRADA',
-    CONTA_AUTENTICADA_LOGIN: 'CONTA_AUTENTICADA_LOGIN',
-    //Error
-    ERROR_EMAIL_EM_USO: 'ERROR_EMAIL_EM_USO',
-    ERROR_USER_NOFIND: 'ERROR_USER_NOFIND',
-    ERROR_NOME_EM_USO: 'ERROR_NOME_EM_USO',
-    ERROR_INTERNO_SISTEMA: "ERROR_INTERNO_SISTEMA"
-}
 
-export const CodeCommonAuth: TCodeCommonAuth = {
+export const CodeCommonAuthBackEnd = {
     //Sucesso
     CONTA_ENCONTRADA: 'CONTA_ENCONTRADA',
     CONTA_REGISTRADA: 'CONTA_REGISTRADA',
@@ -21,7 +10,11 @@ export const CodeCommonAuth: TCodeCommonAuth = {
     ERROR_USER_NOFIND: 'ERROR_USER_NOFIND',
     ERROR_NOME_EM_USO: 'ERROR_NOME_EM_USO',
     ERROR_INTERNO_SISTEMA: "ERROR_INTERNO_SISTEMA"
-}   
+} as const
+
+//tipagem do common
+export type TCodeCommonAuthBackEnd = 
+    typeof CodeCommonAuthBackEnd[keyof typeof CodeCommonAuthBackEnd]
 
 //Usada nas entradas do registrar e logar.
 export const CodeCommonAuthEntry = {

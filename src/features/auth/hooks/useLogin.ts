@@ -1,10 +1,13 @@
 import { useState } from "react"
 //type
-import type {ClassWarnEntrada, ReturnFNValideEntrada} from './hook.type'
+import type { ClassWarnEntrada, ReturnFNValideEntrada } from './hook.type'
+//Notificao
 import { toast } from "react-toastify"
-//Service
-import useLoginService from "../services/useLoginAuth"
-//Mensagem
+//hook
+import useActionAuth from "./useActionAuth"
+//Service hook
+import useLoginService from "./useLoginAuth"
+//Mensagem e Common
 import { authEntryMessages, authMessagesBackEnd } from "../../../shared/mensagem/auth.mensagem"
 //valida
 import { TrataEntryLogin } from "../valida/valida.login"
@@ -22,19 +25,24 @@ function useLogin() {
             try {
                 const {code, sucesso} = await mtLogin.mutateAsync({
                     email: Email,
-                    senha: Senha
+                    password: Senha
                 })
-
                 if (sucesso) { // deu certo, usuario existi
-                    console.log('deu certo o')
+                    await GetMeAuth()
                 } 
                 else {
-                    console.log()
+                    //Add warn nas entradas
+                    SetClassEmail('auth-entrada-warn')
+                    SetClassSenha('auth-entrada-warn')
+                    //mandando notificao
+                    const msg: string = authMessagesBackEnd[code]
+                    toast.error(msg)
                 }
             }
             //caso de errado com requsicao
-            catch {
-                console.log('error ao fazer a requisicao')
+            catch (error) {
+                console.log(error)
+                toast.warn(authMessagesBackEnd.ERROR_INTERNO_SISTEMA)
             }
         }
         else {
@@ -50,13 +58,16 @@ function useLogin() {
     }
  
     //state value das entradas
-    const [Email, SetEmail] = useState<string>('')
-    const [Senha, SetSenha] = useState<string>('')
+    const [Email, SetEmail] = useState<string>('apoloniog1945@gmail.com')
+    const [Senha, SetSenha] = useState<string>('123')
     //class state, vai se usada para dispara o warn nas entradas
     const [ClassEmail, SetClassEmail] = useState<ClassWarnEntrada>('')
     const [ClassSenha, SetClassSenha] = useState<ClassWarnEntrada>('')
-    //hookService
-    const {mtLogin} = useLoginService()
+    //hook Service
+    const { mtLogin } = useLoginService()
+    //hook action
+    const {GetMeAuth} = useActionAuth()
+
 
     return {
         //funcao handler click
@@ -69,7 +80,8 @@ function useLogin() {
         ClassEmail, 
         SetClassEmail,
         ClassSenha,
-        SetClassSenha
+        SetClassSenha,
+        mtLogin
     }
 }
 

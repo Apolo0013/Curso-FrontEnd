@@ -29,6 +29,7 @@ function RegistrarPage() {
         SetNome,
         ClassNome,
         SetClassNome,
+        mtRegister
     } = useRegistrar()
     return (
         <BackAuth>
@@ -74,7 +75,11 @@ function RegistrarPage() {
                     StateClass={ClassNome}
                 />
             </form>
-            <BotaoAuth text="Cadastrar" onClick={ClickRegister}/>
+            <BotaoAuth
+                text="Cadastrar"
+                onClick={ClickRegister}
+                isPending={mtRegister.isPending}
+            />
             <OpcaoAuth />
             <p className="alternate-loginAndRegister">
                 Já possui uma conta? <Link to='/auth/login' className="alternate-auth">Faça login</Link>. 

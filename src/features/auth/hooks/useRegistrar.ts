@@ -3,17 +3,17 @@ import { toast } from "react-toastify";
 //react
 import { useState } from "react"
 //type
-import type { ReturnFNValideEntrada, ClassWarnEntrada, TuseRegistrar} from "./hook.type"
+import type { ReturnFNValideEntrada, ClassWarnEntrada } from "./hook.type"
 //Service
-import useRegistrarService from "../services/useRegistrarAuth";
+import useRegistrarService from "./useRegistrarAuth";
 //Mensagem E Common
 import {authMessagesBackEnd, authEntryMessages} from '../../../shared/mensagem/auth.mensagem'
-import { CodeCommonAuth, type TCodeCommonAuth } from "../../../shared/common/auth.common";
 //Funcoes valida
 import {TrataEntradasRegistrar} from '../valida/valida.registrar'
+import useActionAuth from "./useActionAuth";
 
 //obterNamePage.tsx e registrarpage.tsx, compatilhar esse mesmo hook.
-function useRegistrar(): TuseRegistrar {
+function useRegistrar() {
     //funcao handler click para o botao auth do page registrar.tsx
     async function ClickRegister() {
         const {code, sucesso}: ReturnFNValideEntrada  = TrataEntradasRegistrar({
@@ -22,6 +22,7 @@ function useRegistrar(): TuseRegistrar {
             confirmaSenha: ConfirmaSenha,
             nome: Nome
         })
+        console.log(code)
         //caso de tudo certo.
         if (sucesso) {  
             try { 
@@ -32,11 +33,11 @@ function useRegistrar(): TuseRegistrar {
                     nome: Nome
                 })
                 if (sucesso) {
-                    console.log('registrado!')
+                    await GetMeAuth()
                 }
                 //mensagem de error
                 else {
-                    const msg: string = authMessagesBackEnd[CodeCommonAuth[code as keyof TCodeCommonAuth]]
+                    const msg: string = authMessagesBackEnd[code]
                     toast.error(msg)
                 }
             }
@@ -81,19 +82,21 @@ function useRegistrar(): TuseRegistrar {
     }
 
     //Valores dos input do componentes Entrada.tsx
-    const [Email, SetEmail] = useState<string>('apolonio123@gmail.co') // Email
-    const [Senha, SetSenha] = useState<string>('') // Senha
-    const [ConfirmaSenha, SetConfirmaSenha] = useState<string>('') // senha novamente ou confirma senha
+    const [Email, SetEmail] = useState<string>('apo232onhio123@gmail.com') // Email
+    const [Senha, SetSenha] = useState<string>('123') // Senha
+    const [ConfirmaSenha, SetConfirmaSenha] = useState<string>('123') // senha novamente ou confirma senha
     
     //State para as class das entradas.
     const [ClassEmail, SetClassEmail] = useState<ClassWarnEntrada>('')
     const [ClassSenha, SetClassSenha] = useState<ClassWarnEntrada>('')
     const [ClassConfirmaSenha, SetClassConfirmaSenha] = useState<ClassWarnEntrada>('')
     //State para obter o nome
-    const [Nome, SetNome] = useState<string>("")
+    const [Nome, SetNome] = useState<string>("apolonho231312312")
     const [ClassNome, SetClassNome] = useState<ClassWarnEntrada>('')
     //Hook Service
-    const {mtRegister} = useRegistrarService()
+    const { mtRegister } = useRegistrarService()
+    //Hook Action
+    const { GetMeAuth } = useActionAuth()
 
     return {
         ClickRegister,
@@ -109,7 +112,9 @@ function useRegistrar(): TuseRegistrar {
         ClassConfirmaSenha,
         SetClassConfirmaSenha,
         ClassNome,
-        SetClassNome
+        SetClassNome,
+        //Service
+        mtRegister
     }
 }
 

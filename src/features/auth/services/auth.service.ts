@@ -1,12 +1,12 @@
 //type
 import type {
     TRegistrarParam,
-    TRegistrarResponse,
     TLoginParam,
-    TLoginResponse
+    TMeResponse,
+    TCodeResponse
 } from './service.type'
 
-export async function APILogin(data: TLoginParam): Promise<TLoginResponse> {
+export async function APILogin(data: TLoginParam): Promise<TCodeResponse> {
     try {
         const res = await fetch('http://localhost:5182/auth/Login', {
             method: "POST",
@@ -16,7 +16,7 @@ export async function APILogin(data: TLoginParam): Promise<TLoginResponse> {
             },
             body: JSON.stringify(data)
         })
-        return await res.json() as TLoginResponse
+        return await res.json() as TCodeResponse
     }
     catch (error) {
         console.log(error)
@@ -24,7 +24,7 @@ export async function APILogin(data: TLoginParam): Promise<TLoginResponse> {
     }
 }
 
-export async function APIRegistrar(data: TRegistrarParam): Promise<TRegistrarResponse> {
+export async function APIRegistrar(data: TRegistrarParam): Promise<TCodeResponse> {
     try {
         const res = await fetch("http://localhost:5182/auth/Registrar", {
             method: "POST",
@@ -35,13 +35,32 @@ export async function APIRegistrar(data: TRegistrarParam): Promise<TRegistrarRes
             body: JSON.stringify(data)
         })
         //return await res.text()
-        return await res.json() as TRegistrarResponse
+        return await res.json() as TCodeResponse
     }
     catch (error) {
         console.log(error)
         throw(error)
     }
 }
+
+
+export async function APIMe(): Promise<TMeResponse>  {
+    try {
+        const res = await fetch("http://localhost:5182/auth/Me", {
+            method: "GET",
+            credentials: "include"  
+        })
+        return {
+            response: await res.json(),
+            resquestSucesso: res.status == 200
+        }
+    }
+    catch (error) {
+        console.log(error)
+        throw(error)
+    }
+}
+
 
 //Essa rota, ele vai retorna se o email é valido ou nao
 // Email deve existi
