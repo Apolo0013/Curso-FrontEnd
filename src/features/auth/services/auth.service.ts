@@ -8,7 +8,7 @@ import type {
 
 export async function APILogin(data: TLoginParam): Promise<TCodeResponse> {
     try {
-        const res = await fetch('http://localhost:5182/auth/Login', {
+        const res = await fetch('http://localhost:3333/auth/login', {
             method: "POST",
             credentials: "include",
             headers: {
@@ -16,7 +16,8 @@ export async function APILogin(data: TLoginParam): Promise<TCodeResponse> {
             },
             body: JSON.stringify(data)
         })
-        return await res.json() as TCodeResponse
+        console.log(await res.text( ))
+        //return await res.json() as TCodeResponse
     }
     catch (error) {
         console.log(error)

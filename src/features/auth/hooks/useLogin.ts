@@ -28,7 +28,7 @@ function useLogin() {
                     password: Senha
                 })
                 if (sucesso) { // deu certo, usuario existi
-                    await GetMeAuth()
+                    ///await GetMeAuth()
                 } 
                 else {
                     //Add warn nas entradas
@@ -66,7 +66,7 @@ function useLogin() {
     //hook Service
     const { mtLogin } = useLoginService()
     //hook action
-    const {GetMeAuth} = useActionAuth()
+    //const {GetMeAuth} = useActionAuth()
 
 
     return {

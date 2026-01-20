@@ -29,11 +29,11 @@ function useRegistrar() {
                 //fazendo contato com backend, registrar o usuario
                 const {sucesso, code} = await mtRegister.mutateAsync({
                     email: Email,
-                    senha: Senha,
+                    password: Senha,
                     nome: Nome
                 })
                 if (sucesso) {
-                    await GetMeAuth()
+                    //await GetMeAuth()
                 }
                 //mensagem de error
                 else {
@@ -96,7 +96,7 @@ function useRegistrar() {
     //Hook Service
     const { mtRegister } = useRegistrarService()
     //Hook Action
-    const { GetMeAuth } = useActionAuth()
+    //const { GetMeAuth } = useActionAuth()
 
     return {
         ClickRegister,
