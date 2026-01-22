@@ -35,7 +35,7 @@ export type TLoginParam = {
 
 //Resposta etc APIMe
 //User e Admin
-type Role = "USER" | "ADMIN"
+export type Role = "USER" | "ADMIN" | "GUEST"
 
 //Usuario em si.
 //vai servi como response do APIme

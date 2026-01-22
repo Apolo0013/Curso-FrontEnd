@@ -9,6 +9,8 @@ import { Route, Routes } from 'react-router-dom'
 import LoginPage from '../features/auth/pages/loginpage'
 import RegistrarPage from '../features/auth/pages/registrarpage'
 import CursoPage from "../features/cursos/pages/cursopage";
+import ProtectedRouteUSER from "./ProtectedRoutes/ProtectedRoute.User";
+import ProtectedRouteGuest from "./ProtectedRoutes/ProtectedRoute.Guest";
 
 function App() {
 
@@ -16,9 +18,21 @@ function App() {
         <main className="App">
             <ToastContainer/>
             <Routes>
-                <Route path='/auth/login' element={<LoginPage />}></Route>
-                <Route path='/auth/cadastro' element={<RegistrarPage />}></Route>
-                <Route path="/cursos" element={<CursoPage />} />
+                <Route path='/auth/login' element={
+                    <ProtectedRouteGuest>
+                        <LoginPage />
+                    </ProtectedRouteGuest>
+                }></Route>
+                <Route path='/auth/cadastro' element={
+                    <ProtectedRouteGuest>
+                        <RegistrarPage />
+                    </ProtectedRouteGuest>
+                }></Route>
+                <Route path="/cursos" element={
+                    <ProtectedRouteUSER>
+                        <CursoPage />
+                    </ProtectedRouteUSER>
+                } />
             </Routes>
         </main>
     )

@@ -1,6 +1,10 @@
+import { useAuthStore } from '../../../store/auth.store'
 import './HeaderCurso.scss'
 
 function HeaderCurso() {
+    //Store Global
+    const nome: string = useAuthStore((state) => state.user.nome)
+
     return (
         <header className='head-curso'>
             <ul>
@@ -12,7 +16,8 @@ function HeaderCurso() {
                     />
                     <p
                         className='user-name'
-                    >Apolonio</p>
+                    >{nome}</p>
+                    <div className="teste"></div>
                 </li>
             </ul>
         </header>

@@ -1,0 +1,20 @@
+@use '../../../../styles/global.scss' as *;
+
+.cursos-main {
+    margin-top: rem(50);
+    width: 80%;
+    height: auto;
+
+    * {
+        color: white;
+    }
+
+    .cursos-conteiner {
+        margin-top: rem(50);
+        width: 100%;
+        height: auto;
+        display: grid;
+        align-items: start;
+        grid-template-columns: repeat(3, 33.3%);
+    }
+}

@@ -1,5 +1,5 @@
 import BackCurso from "../componentes/BackCurso"
-import Cursos from "../componentes/Cursos"
+import Cursos from "../componentes/Cursos/Cursos"
 import HeaderCurso from "../componentes/HeaderCurso"
 
 //Componentes

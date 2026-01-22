@@ -16,8 +16,7 @@ export async function APILogin(data: TLoginParam): Promise<TCodeResponse> {
             },
             body: JSON.stringify(data)
         })
-        console.log(await res.text( ))
-        //return await res.json() as TCodeResponse
+        return await res.json() as TCodeResponse
     }
     catch (error) {
         console.log(error)
