@@ -1,0 +1,64 @@
+@use '../../../../styles/global.scss' as *;
+
+.head-curso {
+    width: 100%;
+    height: 70px;
+    padding: rem(3);
+
+    ul {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+        .user-conteiner {
+            margin-right: rem(20);
+            background: $blue-500;
+            display: flex;
+            align-items: center;
+            padding: rem(5);
+            height: 80%;
+            min-width: 150px;
+            max-width: 220px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+
+            .user-img, .user-name {
+                z-index: 2;
+                position: relative;
+            }
+
+            .user-img {
+                border-radius: 10px;
+                height: 100%;
+                object-fit: cover;
+                aspect-ratio: 1 / 1;
+            }
+
+            .user-name {
+                color: white;
+                font-family: 'Sora', Arial, Helvetica, sans-serif;
+            }
+            //Uma pequena animacao no user
+            $cor-slide-low: #ffffff4f;
+            .slide-low {
+                filter: blur(10px);
+                position: absolute;
+                z-index: 1;
+                left: 0;
+                transform: rotate(25deg);
+                background: linear-gradient(90deg, transparent, $cor-slide-low 40%, $cor-slide-low 60%, transparent);
+                width: 20%;
+                height: 150%;
+                animation: anima-slide-low 5s linear 3s infinite forwards;
+            }
+
+            @keyframes anima-slide-low {
+                0% {left: -20%;}
+                70% {left: 120%;}
+                100% {left: 120%;}
+            }
+        }
+    }
+}

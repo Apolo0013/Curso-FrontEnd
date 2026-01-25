@@ -1,0 +1,39 @@
+@use '../../../../styles/global.scss' as *;
+
+$bg-sobreinstrutor: #131528;
+
+.sobre-instrutor {
+    background: $bg-sobreinstrutor;
+    width: 100%;
+    height: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: rem(13);
+    gap: rem(20);
+
+    .instrutor {
+        width: 100%;
+        height: 70px;
+        display: grid;
+        grid-template-columns: 25% 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        h3 {
+            place-content: center;
+            font-size: rem(20);
+        }
+        h3 {color: $text-sg;}
+        h3:nth-child(2) {color: $text-main;}
+
+        img {
+            place-self: center;
+            grid-row: 1 / 3;
+            aspect-ratio: 1 / 1;
+            height: 100%;
+            border-radius: 50%;
+            outline: 2px solid $text-sg;
+        }
+    }
+}

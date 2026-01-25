@@ -1,0 +1,52 @@
+@use '../../../../styles/global.scss' as *;
+
+$bg-comprarcurso: #131528;
+$sub-bg-comprarcurso: #101222;
+
+.wraper-comprar-curso {
+    width: 100%;
+    height: fit-content;
+    border-radius: 10px;
+    background: $bg-comprarcurso;
+    padding: rem(13);
+
+    .comprar-curso {
+        padding: rem(15);
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        background: $sub-bg-comprarcurso;
+        display: flex;
+        flex-direction: column;
+        gap: rem(25);
+
+        //botao de comprar e add no carrinho.
+        .botao-action-comprar-curso {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            gap: 10px;
+
+            button {
+                border-radius: 10px;
+                width: 100%;
+                height: 70px;
+                background: black;
+                font-size: rem(25);
+            }
+
+            button:nth-child(1) {
+                color: black;
+                background:#f4c44a;
+            }
+
+            button:nth-child(2) {
+                color: $text-main;
+                background: #2f4bc9;
+            }
+        }
+    }
+
+    
+}

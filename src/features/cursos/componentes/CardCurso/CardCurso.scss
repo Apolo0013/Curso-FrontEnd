@@ -30,6 +30,10 @@
         position: relative;
 
         .btn-vercurso {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
             border-radius: 10px;
             padding: rem(10);
             height: rem(40);

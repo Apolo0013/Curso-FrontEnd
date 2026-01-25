@@ -3,7 +3,8 @@ import { create } from "zustand";
 import type {TUser} from '../features/auth/services/service.type'
 
 type TAuthStore = {
-    user: TUser
+    user: TUser,
+    SetUser: (user: TUser) => void
 }
 
 export const useAuthStore = create<TAuthStore>((set) => ({

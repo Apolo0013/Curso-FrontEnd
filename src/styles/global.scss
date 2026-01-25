@@ -23,3 +23,38 @@ $bg-btn: #3359ce;
 
 .text-main {color: $text-main;}
 .text-sg {color: $text-sg;}
+
+//Class retulizavel
+.list-check {
+    padding: rem(10);
+    width: 100%;
+    height: auto;
+
+    li {
+        color: $text-sg;
+        position: relative;
+        margin-left: 20px;
+        font-family: "Sora", "Inter", Arial, Helvetica, sans-serif;
+
+        &::before {
+            display: block;
+            width: 5px;
+            aspect-ratio: 1 / 1;
+            content: '✅';
+            position: absolute;
+            transform: translateY(-50%);
+            top: 50%;
+            left: -25px;
+        }
+    }
+}
+
+//Essa class tem como funcao que da um pequna outline ao filho do elemento com essa class. Por questao de UI
+.hover-outline {
+    main {
+        &:hover {
+            transition: outline 0.2s ease-in-out;
+            outline: 2px solid rgba(255, 255, 255, 0.495);
+        }
+    }
+}

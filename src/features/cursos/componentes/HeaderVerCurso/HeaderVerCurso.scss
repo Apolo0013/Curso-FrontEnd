@@ -1,0 +1,21 @@
+@use '../../../../styles/global.scss' as *;
+
+.head-verCurso {
+    gap: rem(10);
+
+    .autor-cursoVer {
+        display: flex;
+        gap: rem(10);
+        align-items: center;
+        width: auto;
+        height: 50px;
+
+        img {
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-fit: cover;
+            outline: 2px solid $text-sg ;
+        }
+    }
+}

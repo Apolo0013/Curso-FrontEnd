@@ -1,54 +1,9 @@
-import CardCurso from './CardCurso'
+import { useCourseStore, type Course } from '../../../../store/curso.store'
+import CardCurso from '../CardCurso/CardCurso'
 import './Cursos.scss'
 
 function Cursos() {
-
-    type Curso = {
-        title: string;
-        autor: string,
-        description: string;
-        price: number;
-        thumbnailURL: string
-    }
-
-    const Cursos: Curso[] = [
-    {
-        title: "JavaScript do Zero",
-        autor: "João Silva",
-        description: "Aprenda JavaScript do básico ao intermediário com exemplos práticos.",
-        price: 49.99,
-        thumbnailURL: "https://cdn.simpleicons.org/javascript/white"
-    },
-    {
-        title: "TypeScript na Prática",
-        autor: "Maria Oliveira",
-        description: "Domine TypeScript e escreva código mais seguro e escalável.",
-        price: 59.99,
-        thumbnailURL: "https://cdn.simpleicons.org/typescript/white"
-    },
-    {
-        title: "React Essencial",
-        autor: "Carlos Souza",
-        description: "Construa interfaces modernas usando React e hooks.",
-        price: 69.99,
-        thumbnailURL: "https://cdn.simpleicons.org/react/white"
-    },
-    {
-        title: "Node.js e APIs REST",
-        autor: "Ana Costa",
-        description: "Crie APIs rápidas e eficientes com Node.js e Express.",
-        price: 64.99,
-        thumbnailURL: "https://cdn.simpleicons.org/nodedotjs/white"
-    },
-    {
-        title: "Python para Automação",
-        autor: "Pedro Lima",
-        description: "Automatize tarefas e aumente sua produtividade com Python.",
-        price: 54.99,
-        thumbnailURL: "https://cdn.simpleicons.org/python/white"
-    }
-]
-
+    const courses: Course[] = useCourseStore(state => state.Course)
     return (
         <main className='cursos-main'>
             <div className='flex flex-col gap-[5px]'>
@@ -57,13 +12,14 @@ function Cursos() {
             </div>
             <div className='cursos-conteiner gap-[10px]'>
                 {
-                    Cursos.map((info, k) => (
+                    courses.map((info, k) => (
                         <CardCurso
                             key={k}
+                            id={info.id}
                             title={info.title}
-                            autor={info.autor}
+                            autor={info.author.name}
                             price={info.price}
-                            thumbnail={info.thumbnailURL}
+                            thumbnail={info.thumbnailUrl}
                         />
                     ))
                 }

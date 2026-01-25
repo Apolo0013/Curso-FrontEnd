@@ -1,13 +1,15 @@
+import { Link } from 'react-router-dom'
 import './CardCurso.scss'
 
 type Props = {
-    title: string;
+    id: string,
+    title: string
     autor: string,
-    price: number;
+    price: number
     thumbnail: string
 }
 
-function CardCurso({title, autor, price, thumbnail}: Props) {
+function CardCurso({title, autor, price, thumbnail, id}: Props) {
     return (
         <div className='card-curso p-3'>
             <img
@@ -23,7 +25,10 @@ function CardCurso({title, autor, price, thumbnail}: Props) {
                     <p className='text-base'>R$</p>
                     <p className='text-xl'>{price}</p>
                 </div>
-                <button className='btn-vercurso'>Ver Curso</button>
+                <Link
+                    className='btn-vercurso'
+                    to={"/cursos/ver/" + id}
+                >Ver Curso</Link>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
-import BackCurso from "../componentes/BackCurso"
+import BackCurso from "../componentes/BackCurso/BackCurso"
 import Cursos from "../componentes/Cursos/Cursos"
-import HeaderCurso from "../componentes/HeaderCurso"
+import HeaderCurso from "../componentes/HeaderCurso/HeaderCurso"
 
 //Componentes
 function CursoPage() {
