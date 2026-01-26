@@ -174,10 +174,10 @@ const Course: Course[] = [
   }
 ]
 
-
 type CursoStore = {
     Course: Course[]
 }
+
 
 export const useCourseStore = create<CursoStore>(() => ({
     Course: Course

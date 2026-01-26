@@ -34,16 +34,25 @@ $sub-bg-comprarcurso: #101222;
                 height: 70px;
                 background: black;
                 font-size: rem(25);
+                transition: 0.3s ease-in;
             }
 
             button:nth-child(1) {
                 color: black;
                 background:#f4c44a;
+                
+                &:hover {
+                    background: lighten(#f4c44a, 15%);
+                }
             }
 
             button:nth-child(2) {
                 color: $text-main;
                 background: #2f4bc9;
+
+                &:hover {
+                    background: darken(#2f4bc9, 15%);
+                }
             }
         }
     }

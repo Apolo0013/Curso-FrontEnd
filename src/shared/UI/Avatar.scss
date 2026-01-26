@@ -1,0 +1,9 @@
+@use '../../styles/global.scss' as *;
+
+img.avatar {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+    outline: 2px solid $text-sg ;
+}

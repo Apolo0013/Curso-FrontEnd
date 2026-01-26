@@ -1,0 +1,49 @@
+@use '../../../../styles/global.scss' as *;
+
+$bg-carditem: #131528;
+
+.card-item {
+    padding: rem(13);
+    border-radius: 10px;
+    width: 100%;
+    height: 180px;
+    background: $bg-carditem;
+    display: grid;
+    grid-template-columns: 30% 50% 20%;
+    grid-template-rows: 30% 30% 40%;
+
+    img.foto-curso {
+        border-radius: 10px;
+        place-items: start;
+        place-content: center;
+        grid-row: 1 / 4;
+        aspect-ratio: 16 / 9;
+        height: 80%;
+    }
+    
+    .user-item {
+        margin-left: rem(10);
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+        height: 100%;
+        width: 100%;
+        grid-row: 2 / 3;
+    }
+
+    .item-preco {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: rem(10);
+        grid-row: 1 / 3;
+        color: $text-main;
+        font-size: rem(25);
+    }
+
+    .botao-remove {
+        grid-column: 2 / 4;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

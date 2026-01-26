@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 //Componentes
 import BackCurso from "../componentes/BackCurso/BackCurso";
-import HeaderCurso from "../componentes/HeaderCurso/HeaderCurso";
+import Header from "../../../shared/componentes/Header/Header";
 import HeaderVerCurso from "../componentes/HeaderVerCurso/HeaderVerCurso";
 import SobreCurso from "../componentes/SobreCurso/SobreCurso";
 import ComprarCurso from "../componentes/ComprarCurso/ComprarCurso";
@@ -15,7 +15,7 @@ function VerCurso() {
     const courseInfo: Course | undefined = useCourseStore((state) => state.Course).find(info => info.id == idCourse)
     return (
         <BackCurso>
-            <HeaderCurso />
+            <Header />
             <main className="p-4 flex flex-col w-10/12">
                 <HeaderVerCurso />
                 <div className="w-full grid mt-10 gap-4 grid-cols-[60%_40%] grid-rows-2 hover-outline">

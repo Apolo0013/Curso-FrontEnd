@@ -1,6 +1,6 @@
-@use '../../../../styles/global.scss' as *;
+@use '../../../styles/global.scss' as *;
 
-.head-curso {
+.head {
     width: 100%;
     height: 70px;
     padding: rem(3);
@@ -9,7 +9,22 @@
         width: 100%;
         height: 100%;
         display: flex;
+        align-items: center;
         justify-content: flex-end;
+        gap: rem(20);
+
+        li {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                object-fit: cover;
+                aspect-ratio: 1 / 1;
+                height: 100%;
+            }
+        }
 
         .user-conteiner {
             margin-right: rem(20);
@@ -61,4 +76,16 @@
             }
         }
     }
+}
+
+
+//warn-circle, um ciruclo presente, no carrinho e o mensagem no header. Sinalizando algo.
+.warn-circle {
+    background: red;
+    aspect-ratio: 1 / 1;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    left: 80%;
 }

@@ -9,7 +9,8 @@ import { Route, Routes } from 'react-router-dom'
 import LoginPage from '../features/auth/pages/loginpage'
 import RegistrarPage from '../features/auth/pages/registrarpage'
 import CursoPage from "../features/cursos/pages/cursopage";
-import VerCurso from "../features/cursos/pages/vercursopage";
+import VerCursoPage from "../features/cursos/pages/vercursopage";
+import CarrinhoPage from "../features/cursos/pages/carrinhopage";
 //Protecao das rotas
 import ProtectedRouteUSER from "./ProtectedRoutes/ProtectedRoute.User";
 import ProtectedRouteGuest from "./ProtectedRoutes/ProtectedRoute.Guest";
@@ -37,7 +38,9 @@ function App() {
                         <CursoPage />
                     </ProtectedRouteUSER>
                 } />
-                <Route path='/cursos/ver/:idCourse' element={<VerCurso />} />
+                <Route path='/cursos/ver/:idCourse' element={<VerCursoPage />} />
+                {/*Carrinho*/}
+                <Route path='/cursos/carrinho' element={<CarrinhoPage/>} />
             </Routes>
         </main>
     )

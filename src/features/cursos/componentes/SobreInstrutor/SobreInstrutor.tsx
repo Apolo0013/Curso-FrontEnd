@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom'
 import './SobreInstrutor.scss'
 import { useCourseStore, type Course } from '../../../../store/curso.store'
+//UI
+import Avatar from '../../../../shared/UI/Avatar'
 
 function SobreInstrutor() {
     //pegando o id do cursos via rotas
@@ -11,7 +13,7 @@ function SobreInstrutor() {
         <main className="sobre-instrutor">
             {/*area ondem vai fica a foto e o nome do instrutor*/}
             <div className='instrutor'>
-                <img src="https://picsum.photos/300" alt="Foto do instrutor" />
+                <Avatar src={course ? course.author.srcAvatar : ""} alt="Foto do instrutor" />
                 <h3>Sobre o Instrutor</h3>
                 <h3>{course ? course.author.name : "Ninguem"}</h3>
             </div>

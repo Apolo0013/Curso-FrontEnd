@@ -1,0 +1,16 @@
+@use '../../styles/global.scss' as *;
+
+//amalero #f4c44a
+//azul #2f4bc9
+
+.ButtonAction {
+    border-radius: 10px;
+    width: 100%;
+    background: black;
+    font-size: rem(25);
+    transition: 0.1s ease-in;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}

@@ -1,6 +1,8 @@
 import './HeaderVerCurso.scss'
 import { useParams } from 'react-router-dom'
 import { useCourseStore, type Course } from '../../../../store/curso.store'
+//UI
+import Avatar from '../../../../shared/UI/Avatar'
 
 function HeaderVerCurso() {
     //id curso
@@ -13,7 +15,10 @@ function HeaderVerCurso() {
                 course ? course.title : "Nada"
             }</h1>
             <div className="autor-cursoVer">
-                <img src='https://picsum.photos/300' alt="imagem do autor do  curso" />
+                <Avatar
+                    src={course ? course.author.srcAvatar : ""}
+                    alt='imagem do autor'
+                />
                 <p className='text-sg text-xl'>{
                     course ? course.author.name : "Ninguem"
                 }</p>
