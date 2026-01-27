@@ -1,0 +1,26 @@
+@use '../../../styles/global.scss' as *;
+
+.nav-main {
+    width: auto;
+    height: 100%;
+    display: flex;
+
+    ul {
+        display: flex;
+        height: 100%;
+
+        li {
+            padding: rem(15);
+            cursor: pointer;
+            font-family: 'Sora', "Inter", Arial, Helvetica, sans-serif;
+            flex: 1;
+            color: $text-main;
+            font-size: rem(18);
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(0.99);
+            }
+        }
+    }
+}

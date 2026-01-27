@@ -1,13 +1,23 @@
-import { useParams } from 'react-router-dom'
 import './ComprarCurso.scss'
+//react
+import { useParams } from 'react-router-dom'
+
+//Store
 import { useCourseStore, type Course } from '../../../../store/curso.store'
+//UI
 import BotaoAction from '../../../../shared/UI/ButtonAction'
+//HOOK
+import useVerCurso from '../../hooks/useVerCurso'
 
 function ComprarCurso() {
     //peganddo o id do curso via rota
     const { idCourse } = useParams()
     //pegando o curso pelo store
     const course: Course | undefined = useCourseStore((state) => state.Course).find(info => info.id == idCourse)
+    //HOOK
+    const {
+        onClickAddCarrinho
+    } = useVerCurso()
     return (
         <main className="wraper-comprar-curso">
             <div className='comprar-curso'>
@@ -22,6 +32,7 @@ function ComprarCurso() {
                         bg='#2f4bc9'
                         text='Adicionar ao Carrinho'
                         color='white'
+                        onClick={() => onClickAddCarrinho(course!)}
                     />
                 </div>
                 <ul className="list-check">

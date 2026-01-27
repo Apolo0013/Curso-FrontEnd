@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import BotaoAction from '../../../../shared/UI/ButtonAction'
 import './ResumoCart.scss'
 
 function ResumoCart() {
+    //navagador de rotas
+    const nv = useNavigate()
     return (
         <main className='wraper-resumo-cart'>
             <div className="resumo-cart">
@@ -27,6 +30,7 @@ function ResumoCart() {
                         bg='#2945c2'
                         height='60px'
                         color='white'
+                        onClick={() => nv('/cursos')}
                     />
                 </div>
             </div>

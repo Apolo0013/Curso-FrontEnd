@@ -1,20 +1,26 @@
+//UI
 import Avatar from '../../../../shared/UI/Avatar'
 import BotaoAction from '../../../../shared/UI/ButtonAction'
+//hook
+import useCarrinho from '../../hooks/useCarrinho'
+//scss
 import './CardItem.scss'
 
 type Props = {
+    id: string,
     srcAvatar: string,
-    name: string,
+    title: string,
     srcAuthor: string,
     nameAuthor: string
     price: number
 }
 
-function CardItem({srcAvatar, name, srcAuthor, nameAuthor, price}: Props) {
+function CardItem({id ,srcAvatar, title, srcAuthor, nameAuthor, price }: Props) {
+    const {onClickRemoveCarrinho} = useCarrinho()
     return (
         <div className='card-item'>
             <img src={srcAvatar} alt="Imagem do curso" className='foto-curso'/>
-            <p className='text-xl text-main place-content-center pl-2'>{name}</p>
+            <p className='text-xl text-main place-content-center pl-2'>{title}</p>
             <div className='user-item'>
                 <span className='h-4/5'>
                     <Avatar src={srcAuthor} alt='Imagem do autor do curso' />
@@ -29,6 +35,7 @@ function CardItem({srcAvatar, name, srcAuthor, nameAuthor, price}: Props) {
                     bg='#1a1c31'
                     height='100%'
                     width='50%'
+                    onClick={() => onClickRemoveCarrinho(id)}
                 />
             </div>
         </div>
