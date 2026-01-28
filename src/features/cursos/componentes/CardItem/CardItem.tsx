@@ -1,6 +1,6 @@
 //UI
-import Avatar from '../../../../shared/UI/Avatar'
-import BotaoAction from '../../../../shared/UI/ButtonAction'
+import Avatar from '../../../../shared/UI/Avatar/Avatar'
+import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 //hook
 import useCarrinho from '../../hooks/useCarrinho'
 //scss

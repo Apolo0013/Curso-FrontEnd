@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import BotaoAction from '../../../../shared/UI/ButtonAction'
+import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 import './ResumoCart.scss'
 
 function ResumoCart() {

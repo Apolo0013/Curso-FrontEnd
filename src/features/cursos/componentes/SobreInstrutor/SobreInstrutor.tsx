@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import './SobreInstrutor.scss'
 import { useCourseStore, type Course } from '../../../../store/curso.store'
 //UI
-import Avatar from '../../../../shared/UI/Avatar'
+import Avatar from '../../../../shared/UI/Avatar/Avatar'
 
 function SobreInstrutor() {
     //pegando o id do cursos via rotas

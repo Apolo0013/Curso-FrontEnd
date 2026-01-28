@@ -2,7 +2,7 @@ import './HeaderVerCurso.scss'
 import { useParams } from 'react-router-dom'
 import { useCourseStore, type Course } from '../../../../store/curso.store'
 //UI
-import Avatar from '../../../../shared/UI/Avatar'
+import Avatar from '../../../../shared/UI/Avatar/Avatar'
 
 function HeaderVerCurso() {
     //id curso

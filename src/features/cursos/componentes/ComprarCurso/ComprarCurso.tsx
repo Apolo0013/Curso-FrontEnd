@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 //Store
 import { useCourseStore, type Course } from '../../../../store/curso.store'
 //UI
-import BotaoAction from '../../../../shared/UI/ButtonAction'
+import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 //HOOK
 import useVerCurso from '../../hooks/useVerCurso'
 

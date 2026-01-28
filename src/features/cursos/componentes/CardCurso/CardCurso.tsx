@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './CardCurso.scss'
+import ObserverWrapper from '../../../../shared/UI/ObserverWrapper/ObserverWrapper'
 
 type Props = {
     id: string,
@@ -11,26 +12,33 @@ type Props = {
 
 function CardCurso({title, autor, price, thumbnail, id}: Props) {
     return (
-        <div className='card-curso p-3'>
-            <img
-                src={thumbnail}
-                alt="Imagem do curso"
-            />
-            <div className='w-full flex flex-col h-1/4'>
-                <h2 className='text-main text-2xl'>{title}</h2>
-                <p className='text-sg text-lg'>Professor(a) {autor}</p>
-            </div>
-            <div className='card-curso-acao'>
-                <div className='card-curso-preco'>
-                    <p className='text-base'>R$</p>
-                    <p className='text-xl'>{price}</p>
+        <ObserverWrapper
+            y='100px'
+            x='0'
+            opacity={0.2}
+            duration='0.5s'
+        >
+            <div className='card-curso p-3'>
+                <img
+                    src={thumbnail}
+                    alt="Imagem do curso"
+                />
+                <div className='w-full flex flex-col h-1/4'>
+                    <h2 className='text-main text-2xl'>{title}</h2>
+                    <p className='text-sg text-lg'>Professor(a) {autor}</p>
                 </div>
-                <Link
-                    className='btn-vercurso'
-                    to={"/cursos/ver/" + id}
-                >Ver Curso</Link>
+                <div className='card-curso-acao'>
+                    <div className='card-curso-preco'>
+                        <p className='text-base'>R$</p>
+                        <p className='text-xl'>{price}</p>
+                    </div>
+                    <Link
+                        className='btn-vercurso'
+                        to={"/cursos/ver/" + id}
+                    >Ver Curso</Link>
+                </div>
             </div>
-        </div>
+        </ObserverWrapper>
     )
 }
 
