@@ -9,12 +9,11 @@
         color: white;
     }
 
-    .cursos-conteiner {
+    .cursos-conteiner { 
         margin-top: rem(50);
         width: 100%;
         height: auto;
         display: grid;
-        align-items: start;
         grid-template-columns: repeat(3, 33.3%);
     }
 }

@@ -1,14 +1,24 @@
 import './HeaderVerCurso.scss'
+//React
 import { useParams } from 'react-router-dom'
-import { useCourseStore, type Course } from '../../../../store/curso.store'
+//Type
+import type { Course } from '../../hooks/type'
 //UI
 import Avatar from '../../../../shared/UI/Avatar/Avatar'
+import useCursosQuery from '../../hooks/useCursosQuery'
+import useCurso from '../../hooks/useCursos'
 
 function HeaderVerCurso() {
     //id curso
     const { idCourse } = useParams()
+    //Hook
+    const { data } = useCursosQuery()
+    const {GetByID} = useCurso()
     //pegando o curso via store
-    const course: Course | undefined = useCourseStore(state => state.Course).find(info => info.id == idCourse)
+    const course: Course | undefined = GetByID(
+        data ? data!.data: undefined,
+        idCourse!
+    )
     return (
         <header className="flex flex-col w-full head-verCurso">
             <h1 className="text-main text-4xl">{
@@ -16,7 +26,7 @@ function HeaderVerCurso() {
             }</h1>
             <div className="autor-cursoVer">
                 <Avatar
-                    src={course ? course.author.srcAvatar : ""}
+                    src={course ? course.author.srcAvatar : "#"}
                     alt='imagem do autor'
                 />
                 <p className='text-sg text-xl'>{

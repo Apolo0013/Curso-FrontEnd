@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom"
 //Componentes
 import BackCurso from "../componentes/BackCurso/BackCurso";
 import Header from "../../../shared/componentes/Header/Header";
@@ -6,13 +5,9 @@ import HeaderVerCurso from "../componentes/HeaderVerCurso/HeaderVerCurso";
 import SobreCurso from "../componentes/SobreCurso/SobreCurso";
 import ComprarCurso from "../componentes/ComprarCurso/ComprarCurso";
 import SobreInstrutor from "../componentes/SobreInstrutor/SobreInstrutor";
-import { useCourseStore, type Course } from "../../../store/curso.store";
+
 
 function VerCurso() {
-    //ID curso
-    const { idCourse } = useParams()
-    //Pegando as informacao sobre o curso
-    const courseInfo: Course | undefined = useCourseStore((state) => state.Course).find(info => info.id == idCourse)
     return (
         <BackCurso>
             <Header />

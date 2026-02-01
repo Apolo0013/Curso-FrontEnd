@@ -4,19 +4,23 @@ import { CursoMensagem } from "../../../shared/mensagem/curso.mensagem"
 
 
 function useCarrinho() {
+    function SumOfPurchases(): number {
+        return Itens.reduce((acc, item) => acc + item.price, 0)
+    }
+
     function onClickRemoveCarrinho(id: string) {
-        useCartStore.setState(prev => ({
-            Itens: prev.Itens.filter(
-                (info, _) => info.id != id
-            )
-        }))
+        Remove(id)
         //mandando a notificao de sucesso
         toast.success(CursoMensagem.SUCESSO_CURSO_REMOVIDO, {
             autoClose: 3000
         })
     }
+
+    const {Remove, Itens} = useCartStore()
+
     return {
-        onClickRemoveCarrinho
+        onClickRemoveCarrinho,
+        SumOfPurchases
     }
 }
 

@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 import './ResumoCart.scss'
+import useCarrinho from '../../hooks/useCarrinho'
 
 function ResumoCart() {
     //navagador de rotas
     const nv = useNavigate()
+    //Hook
+    const {SumOfPurchases} = useCarrinho()
     return (
         <main className='wraper-resumo-cart'>
             <div className="resumo-cart">
@@ -12,11 +15,11 @@ function ResumoCart() {
                 <div className='flex flex-col mt-2'>
                     <span className='resumo'>
                         <h3 className='discount-text'>Subtotal</h3>
-                        <p className='discount-price'>R$ 100</p>
+                        <p className='discount-price'>R$ {SumOfPurchases()}</p>
                     </span>
                     <span className='resumo'>
                         <h3 className='tax-text'>Total</h3>
-                        <p className="tax-price">R$ 100</p>
+                        <p className="tax-price">R$ {SumOfPurchases()}</p>
                     </span>
                 </div>
                 <div className='flex flex-col gap-2'>

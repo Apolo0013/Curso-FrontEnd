@@ -1,7 +1,7 @@
 import type { ParamObserver } from "./type"
 
 function useObserverWrapper() {
-    function Observer({SetStyle, el}: ParamObserver) {
+    function Observer({ SetStyle, el }: ParamObserver) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {

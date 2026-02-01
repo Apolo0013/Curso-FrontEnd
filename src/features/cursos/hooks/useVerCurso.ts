@@ -1,6 +1,6 @@
 import { toast } from "react-toastify"
 import { useCartStore, type ItemCart } from "../../../store/cart.store"
-import type { Course } from "../../../store/curso.store"
+import type { Course } from "./type"
 //mensagens
 import { CursoMensagem } from "../../../shared/mensagem/curso.mensagem"
 import { useNavigate } from "react-router-dom"
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 function useVerCurso() {
     function onClickAddCarrinho(course: Course) {
         //verificando se ele ja add no carrinhho
-        if (items.some(info => info.id == course.id)) {
+        if (Itens.some(info => info.id == course.id)) {
             toast.error(CursoMensagem.ERROR_CURSO_JA_ADD, {
             autoClose: 3000
         })
@@ -27,14 +27,7 @@ function useVerCurso() {
             thumbnailUrl: course.thumbnailUrl
         }
         //add na lista
-        useCartStore.setState((prev) => (
-            {
-            Itens: [
-                ...prev.Itens,
-                item
-            ]
-        }
-        ))
+        Add(item)
         //add no carrinho. Manda um aviso
         toast.success(CursoMensagem.SUCESSO_ADD_CURSO, {
             autoClose: 3000,
@@ -45,7 +38,7 @@ function useVerCurso() {
     }
 
     //Store carrinho/cart
-    const items = useCartStore(state => state.Itens)
+    const {Add, Itens} = useCartStore()
     //nevegador
     const nv = useNavigate()
 

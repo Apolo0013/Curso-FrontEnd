@@ -6,7 +6,7 @@ import { toast } from "react-toastify"
 //hook
 import useActionAuth from "./useActionAuth"
 //Service hook
-import useLoginService from "./useLoginAuth"
+import useLoginService from "./useLoginQuery"
 //Mensagem e Common
 import { authEntryMessages, authMessagesBackEnd } from "../../../shared/mensagem/auth.mensagem"
 //valida

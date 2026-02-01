@@ -1,3 +1,4 @@
+//Componentes
 import BackCurso from "../componentes/BackCurso/BackCurso"
 import Cursos from "../componentes/Cursos/Cursos"
 import HeaderCurso from "../../../shared/componentes/Header/Header"

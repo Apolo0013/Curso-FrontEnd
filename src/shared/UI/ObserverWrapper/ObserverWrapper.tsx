@@ -1,6 +1,6 @@
 //Essa UI vai fazer a entrada suave do compobnentets ondem ele vai receber como filho
 import type React from 'react'
-import useObserverWrapper from './UseObsWrapper'
+import useObserverWrapper from './useObsWrapper'
 import { useEffect, useRef, useState } from 'react'
 //type 
 import type { Style } from './type'

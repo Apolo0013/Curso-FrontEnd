@@ -5,7 +5,7 @@ import { useState } from "react"
 //type
 import type { ReturnFNValideEntrada, ClassWarnEntrada } from "./hook.type"
 //Service
-import useRegistrarService from "./useRegistrarAuth";
+import useRegistrarService from "./useRegistrarQuery";
 //Mensagem E Common
 import {authMessagesBackEnd, authEntryMessages} from '../../../shared/mensagem/auth.mensagem'
 //Funcoes valida

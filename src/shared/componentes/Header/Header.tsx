@@ -1,10 +1,9 @@
 //CSS
 import './Header.scss'
 //react
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 //Store
 import { useAuthStore } from '../../../store/auth.store'
-import { useCourseStore, type Course } from '../../../store/curso.store'
 import { useHeadStore } from '../../../store/head.store'
 import { useCartStore } from '../../../store/cart.store'
 //imagens
@@ -18,9 +17,6 @@ import NavMain from '../NavMain/NavMain'
 function Header() {
     //Store Global
     const nome: string = useAuthStore((state) => state.user.nome)
-    //id do curso
-    const {idCourse } = useParams()
-    const course: Course | undefined = useCourseStore(state => state.Course).find(info => info.id == idCourse)
     //store head
     const { WarnCircleMsg } = useHeadStore(state => state)
     //store cart

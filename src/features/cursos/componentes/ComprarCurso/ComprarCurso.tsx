@@ -1,19 +1,25 @@
 import './ComprarCurso.scss'
 //react
 import { useParams } from 'react-router-dom'
-
-//Store
-import { useCourseStore, type Course } from '../../../../store/curso.store'
+//type
+import type { Course } from '../../hooks/type'
 //UI
 import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 //HOOK
 import useVerCurso from '../../hooks/useVerCurso'
+import useCursos from '../../hooks/useCursos'
+import useCursosQuery from '../../hooks/useCursosQuery'
 
 function ComprarCurso() {
     //peganddo o id do curso via rota
     const { idCourse } = useParams()
-    //pegando o curso pelo store
-    const course: Course | undefined = useCourseStore((state) => state.Course).find(info => info.id == idCourse)
+    
+    const { data } = useCursosQuery()
+    const {GetByID} = useCursos()
+    const course : Course | undefined = GetByID(
+        data ? data!.data: undefined,
+        idCourse!
+    )
     //HOOK
     const {
         onClickAddCarrinho

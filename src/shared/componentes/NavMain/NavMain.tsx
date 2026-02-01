@@ -1,14 +1,15 @@
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './NavMain.scss'
 
 function NavMain() {
+    const pathname: string = useLocation().pathname
     //navegador das rotas
     const nv = useNavigate()
     return (
         <nav className='nav-main'>
             <ul>
-                <li onClick={() => nv('/cursos')}>Cursos</li>
-                <li>DashBoard</li>
+                <li className={pathname.startsWith('/cursos') ? 'target-nav' : ''} onClick={() => nv('/cursos')}>Cursos</li>
+                <li className={pathname.startsWith('/dashboard') ? "target-nav" : ''}>DashBoard</li>
             </ul>
         </nav>
     )

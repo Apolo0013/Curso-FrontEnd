@@ -3,10 +3,9 @@
 .head {
     display: grid;
     grid-template-columns: 10% 40% 50%;
-    grid-template-rows: 70px;
+    grid-template-rows: 80px;
     width: 100%;
-    height: 70px;
-    padding: rem(3);
+    height: 80px;
     background: rgba(255, 255, 255, 0.028);
 
     .logo {
@@ -16,7 +15,7 @@
 
     ul {
         place-content: end;
-        height: 100%;
+        height: 90%;
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -35,6 +34,8 @@
                 height: 100%;
             }
         }
+
+
 
         .user-conteiner {
             margin-right: rem(20);

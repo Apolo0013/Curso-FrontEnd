@@ -13,16 +13,22 @@ type Props = {
 function CardCurso({title, autor, price, thumbnail, id}: Props) {
     return (
         <ObserverWrapper
-            y='100px'
+            y='50px'
             x='0'
             opacity={0.2}
             duration='0.5s'
         >
             <div className='card-curso p-3'>
-                <img
-                    src={thumbnail}
-                    alt="Imagem do curso"
-                />
+                <div className="img-card-curso">
+                    <img
+                        src={thumbnail}
+                        width="1280"
+                        height="720"
+                        loading="lazy"
+                        decoding="async"
+                        alt="Imagem do curso"
+                    />
+                </div>
                 <div className='w-full flex flex-col h-1/4'>
                     <h2 className='text-main text-2xl'>{title}</h2>
                     <p className='text-sg text-lg'>Professor(a) {autor}</p>

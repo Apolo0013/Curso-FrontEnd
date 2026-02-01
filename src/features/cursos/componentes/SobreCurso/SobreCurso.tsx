@@ -1,12 +1,22 @@
 import { useParams } from 'react-router-dom'
 import './SobreCurso.scss'
-import { useCourseStore, type Course } from '../../../../store/curso.store'
+//Hook
+import useCursosQuery from '../../hooks/useCursosQuery'
+import useCurso from '../../hooks/useCursos'
+//type 
+import type { Course } from '../../hooks/type'
 
 function SobreCurso() {
     //pegando paramentro via  rota
     const { idCourse } = useParams()
+    //Hook
+    const { data } = useCursosQuery()
+    const {GetByID} = useCurso()
     //acessanddo o store, e pegandod o curso
-    const course: Course | undefined = useCourseStore(state => state.Course).find(info => info.id == idCourse)
+    const course: Course | undefined = GetByID(
+            data ? data!.data: undefined,
+            idCourse!
+        )
     return (
         <main className="sobre-curso">
             <h2 className='title-sobre-curso'>Sobre o Curso</h2>
@@ -44,17 +54,15 @@ function SobreCurso() {
             </ul>
 
             <h3 className='sub-title-curso'>Ao final do curso</h3>
-            <p className='paragrafo-sobre-curso'>
-                <ul className='list-check'>
-                    {
-                        course ?
-                            course.completionBenefits.map((text, key) => (
-                                <li key={key}>{text}</li>
-                            ))
-                            : <li>Nada</li>
-                    }   
-                </ul>
-            </p>
+            <ul className='list-check'>
+                {
+                    course ?
+                        course.completionBenefits.map((text, key) => (
+                            <li key={key}>{text}</li>
+                        ))
+                        : <li>Nada</li>
+                }   
+            </ul>
         </main>
     )
 }
