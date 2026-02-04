@@ -14,6 +14,7 @@ import CarrinhoPage from "../features/cursos/pages/carrinhopage";
 //Protecao das rotas
 import ProtectedRouteUSER from "./ProtectedRoutes/ProtectedRoute.User";
 import ProtectedRouteGuest from "./ProtectedRoutes/ProtectedRoute.Guest";
+import DashBoardUserPage from "../features/dashboard/pages/dashboarduserpage";
 
 function App() {
 
@@ -40,7 +41,9 @@ function App() {
                 } />
                 <Route path='/cursos/ver/:idCourse' element={<VerCursoPage />} />
                 {/*Carrinho*/}
-                <Route path='/cursos/carrinho' element={<CarrinhoPage/>} />
+                <Route path='/cursos/carrinho' element={<CarrinhoPage />} />
+                {/*Rota DashBoard*/}
+                <Route path='/dashboard' element={<DashBoardUserPage/>} />
             </Routes>
         </main>
     )

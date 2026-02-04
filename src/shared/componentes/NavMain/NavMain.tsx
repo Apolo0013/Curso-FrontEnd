@@ -8,8 +8,14 @@ function NavMain() {
     return (
         <nav className='nav-main'>
             <ul>
-                <li className={pathname.startsWith('/cursos') ? 'target-nav' : ''} onClick={() => nv('/cursos')}>Cursos</li>
-                <li className={pathname.startsWith('/dashboard') ? "target-nav" : ''}>DashBoard</li>
+                <li
+                    className={pathname.startsWith('/cursos') ? 'target-nav' : ''}
+                    onClick={() => nv('/cursos')}
+                >Cursos</li>
+                <li
+                    className={pathname.startsWith('/dashboard') ? "target-nav" : ''}
+                    onClick={() => nv('/dashboard')}
+                >DashBoard</li>
             </ul>
         </nav>
     )

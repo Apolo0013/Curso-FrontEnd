@@ -1,4 +1,5 @@
-@use '../../../styles/global.scss' as *;
+@use '../../../styles/palette.scss' as var;
+@use '../../../styles/function.scss' as fn;
 
 .nav-main {
     width: auto;
@@ -9,7 +10,7 @@
         display: flex;
         height: 100%;
 
-        $color-target-nav: $blue-500;
+        $color-target-nav: var.$blue-500;
 
         .target-nav {
             border-bottom: 5px solid $color-target-nav;
@@ -17,12 +18,12 @@
 
         li {
             height: 100%;
-            padding: rem(15);
+            padding: fn.rem(15);
             cursor: pointer;
             font-family: 'Sora', "Inter", Arial, Helvetica, sans-serif;
             flex: 1;
-            color: $text-main;
-            font-size: rem(18);
+            color: var.$text-main;
+            font-size: fn.rem(18);
             transition: transform 0.3s ease;
 
             &:hover {

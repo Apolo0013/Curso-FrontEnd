@@ -1,0 +1,28 @@
+@use '../../../../styles/function.scss' as fn;
+
+$grenn: #85b782;
+$outline-card: #34396d;
+
+.card-continuar-aprendendo {
+    outline: 1px solid $outline-card;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-template-rows: 1fr;
+    gap: fn.rem(10);
+    padding: fn.rem(10);
+
+
+    img {
+        border-radius: 10px;
+        object-fit: cover;
+        height: 100%;
+    }
+
+    .next-course-h3 {
+        color: $grenn;
+        //font-size: fn.rem(18);
+    }
+}

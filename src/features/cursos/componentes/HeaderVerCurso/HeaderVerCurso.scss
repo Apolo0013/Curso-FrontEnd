@@ -1,11 +1,11 @@
-@use '../../../../styles/global.scss' as *;
+@use '../../../../styles/function.scss' as fn;
 
 .head-verCurso {
-    gap: rem(10);
+    gap: fn.rem(10);
 
     .autor-cursoVer {
         display: flex;
-        gap: rem(10);
+        gap: fn.rem(10);
         align-items: center;
         width: auto;
         height: 50px;

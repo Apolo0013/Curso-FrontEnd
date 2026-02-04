@@ -1,7 +1,7 @@
-@use '../../../../styles/global.scss' as *;
+@use '../../../../styles/function.scss' as fn;
 
 .cursos-main {
-    margin-top: rem(50);
+    margin-top: fn.rem(50);
     width: 80%;
     height: auto;
 
@@ -10,10 +10,11 @@
     }
 
     .cursos-conteiner { 
-        margin-top: rem(50);
+        margin-top: fn.rem(50);
         width: 100%;
         height: auto;
         display: grid;
-        grid-template-columns: repeat(3, 33.3%);
+        //modifiquei aqui
+        grid-template-columns: repeat(3, 1fr); // 33.3%
     }
 }

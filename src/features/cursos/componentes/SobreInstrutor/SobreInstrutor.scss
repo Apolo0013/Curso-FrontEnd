@@ -1,4 +1,5 @@
-@use '../../../../styles/global.scss' as *;
+@use '../../../../styles/palette.scss' as var;
+@use '../../../../styles/function.scss' as fn;
 
 $bg-sobreinstrutor: #131528;
 
@@ -10,8 +11,8 @@ $bg-sobreinstrutor: #131528;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    padding: rem(13);
-    gap: rem(20);
+    padding: fn.rem(13);
+    gap: fn.rem(20);
 
     .instrutor {
         width: 100%;
@@ -22,10 +23,10 @@ $bg-sobreinstrutor: #131528;
 
         h3 {
             place-content: center;
-            font-size: rem(20);
+            font-size: fn.rem(20);
         }
-        h3 {color: $text-sg;}
-        h3:nth-child(2) {color: $text-main;}
+        h3 {color: var.$text-sg;}
+        h3:nth-child(2) {color: var.$text-main;}
 
         img {
             place-self: center;
@@ -33,7 +34,7 @@ $bg-sobreinstrutor: #131528;
             aspect-ratio: 1 / 1;
             height: 100%;
             border-radius: 50%;
-            outline: 2px solid $text-sg;
+            outline: 2px solid var.$text-sg;
         }
     }
 }

@@ -13,10 +13,11 @@ interface Props extends Style {
     "ease-out" |
     "ease-in-out" |
     "linear",
-    duration: string
+    duration: string,
+    threshold?: number
 }
 
-function ObserverWrapper({ children, x, y, opacity, timing_function = 'ease-in-out', duration}: Props) {
+function ObserverWrapper({ children, x, y, opacity, timing_function = 'ease-in-out', duration, threshold = 0}: Props) {
     //hook
     const { Observer } = useObserverWrapper()
     //Ref do Conteiner
@@ -31,7 +32,8 @@ function ObserverWrapper({ children, x, y, opacity, timing_function = 'ease-in-o
         if (!RefConteiner.current) return
         Observer({
             SetStyle: SetStyle,
-            el: RefConteiner.current
+            el: RefConteiner.current,
+            threshold: threshold
         })
     }, [])
     return (

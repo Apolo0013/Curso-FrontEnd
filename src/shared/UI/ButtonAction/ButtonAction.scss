@@ -1,4 +1,4 @@
-@use '../../../styles/global.scss' as *;
+@use '../../../styles/function.scss' as fn;
 
 //amalero #f4c44a
 //azul #2f4bc9
@@ -6,8 +6,7 @@
 .ButtonAction {
     border-radius: 10px;
     width: 100%;
-    background: black;
-    font-size: rem(25);
+    font-size: fn.rem(25);
     transition: 0.1s ease-in;
 
     &:hover {

@@ -1,10 +1,10 @@
-@use '../../../styles/global.scss' as *;
+@use '../../../styles/function.scss' as fn;
 
 .Opcao-auth {
-    margin-top: rem(20);
+    margin-top: fn.rem(20);
     width: 90%;
-    height: rem(40);
-    gap: rem(10);
+    height: fn.rem(40);
+    gap: fn.rem(10);
     display: flex;
 
     .Opcao-conectar {
@@ -13,7 +13,7 @@
         align-items: center;
         background: #141414;
         border-radius: 20px;
-        gap: rem(5);
+        gap: fn.rem(5);
         flex: 1;
         cursor: no-drop;
 
@@ -24,7 +24,7 @@
 
         p {
             color: #8b8b8b;
-            font-weight: rem(16);
+            font-weight: fn.rem(16);
         }
     }
 }

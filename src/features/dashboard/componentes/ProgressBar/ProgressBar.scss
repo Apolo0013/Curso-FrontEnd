@@ -1,0 +1,40 @@
+$bg-progress-bar: #101222;
+$bg-bar: #85b782;
+
+.progress-bar {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    grid-template-rows: 100%;
+    width: 100%;
+    height: 30px;
+
+    .back-bar {
+        place-self: center;
+        overflow: hidden;
+        border-radius: 10px;
+        width: 100%;
+        height: 10px;
+        background: $bg-progress-bar;
+
+        .bar {
+            transition: 0.5s ease-in-out;
+            background-color: $bg-bar;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                darken($bg-bar, 10%) 0 10px,
+                transparent 10px 20px
+            );
+            background-size: 35px 100%;
+            height: 100%;
+            width: 90%;
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+            animation: progress 2s linear infinite;
+
+            @keyframes progress {
+                from {background-position: 0 0 ;}
+                to {background-position: 35px 0;}
+            }
+        }
+    }
+}

@@ -1,9 +1,10 @@
-@use '../../../../styles/global.scss' as *;
+@use '../../../../styles/function.scss' as fn;
+@use '../../../../styles/palette.scss' as var;
 
 $bg-carditem: #131528;
 
 .card-item {
-    padding: rem(13);
+    padding: fn.rem(13);
     border-radius: 10px;
     width: 100%;
     height: 180px;
@@ -22,10 +23,10 @@ $bg-carditem: #131528;
     }
     
     .user-item {
-        margin-left: rem(10);
+        margin-left: fn.rem(10);
         display: flex;
         align-items: center;
-        gap: rem(10);
+        gap: fn.rem(10);
         height: 100%;
         width: 100%;
         grid-row: 2 / 3;
@@ -35,10 +36,10 @@ $bg-carditem: #131528;
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        margin-top: rem(10);
+        margin-top: fn.rem(10);
         grid-row: 1 / 3;
-        color: $text-main;
-        font-size: rem(25);
+        color: var.$text-main;
+        font-size: fn.rem(25);
     }
 
     .botao-remove {

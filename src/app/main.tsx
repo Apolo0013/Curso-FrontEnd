@@ -1,4 +1,8 @@
+//Global CSS
+import '../styles/main.scss'
+//React
 import { createRoot } from 'react-dom/client'
+//Main
 import App from './App.tsx'
 //Rota
 import { BrowserRouter } from 'react-router-dom'

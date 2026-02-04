@@ -1,0 +1,10 @@
+@use '../../../../styles/function.scss' as fn;
+
+.main-grid-dashboard {
+    margin-top: fn.rem(30);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: fn.rem(250) auto;
+    gap: fn.rem(10);
+}

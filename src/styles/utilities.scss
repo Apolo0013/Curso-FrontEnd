@@ -1,37 +1,22 @@
-//funcao que tranforma px em rem
-@function rem($px, $base: 16) {
-  @return ($px / $base) * 1rem;
+@use './palette.scss' as var;
+@use './function.scss' as fn;
+
+.text-main {color: var.$text-main;}
+.text-sg {color: var.$text-sg;}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
 }
-
-//sem border e outline
-button, fieldset, input {
-    border: 0;
-    outline: 0;
-}
-
-//Paleta
-$blue-500: #3D79F2;
-$navy-900: #101E39;
-$gray-800: #262626;
-$black-900: #0D0D0D;
-$card-bg: #1c2133;
-//textos
-$text-main:#F2F2F2;
-$text-sg: #a2a2a2;
-//cor botao
-$bg-btn: #3359ce;
-
-.text-main {color: $text-main;}
-.text-sg {color: $text-sg;}
 
 //Class retulizavel
 .list-check {
-    padding: rem(10);
+    padding: fn.rem(10);
     width: 100%;
     height: auto;
 
     li {
-        color: $text-sg;
+        color: var.$text-sg;
         position: relative;
         margin-left: 20px;
         font-family: "Sora", "Inter", Arial, Helvetica, sans-serif;

@@ -1,0 +1,20 @@
+@use '../../../../styles/function.scss' as fn;
+
+.MeusCursos {
+    width: 100%;
+    height: 100%;
+    grid-column: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    margin-top: fn.rem(20);
+    gap: fn.rem(10);
+
+    .grid-cursos-meus-cursos {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(350px, auto);
+        gap: fn.rem(10);
+    }
+}

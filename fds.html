@@ -21,68 +21,20 @@
         }
 
         .card {
-            border: 1px solid black;
-            background: black;
-            height: 300px;
-            aspect-ratio: 3 / 4;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card > img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.3s ease-in-out;
-            cursor: pointer;
-            z-index: 1;
-            position: relative;
-        }
-
-        .card:hover > img {
-            transform: scale(1.4);
-        }
-
-        .card::before, .card::after {
-            transition: 5s ease-in-out !important;
-            opacity: 0 !important;
-        }
-
-        .card:hover:before {
-            opacity: 1 !important;
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(2px);
-        }
-        
-        .card:hover:after {
-            opacity: 1 !important;
-            content: 'Ford GT';
-            width: 100%;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: bold;
-            font-size: 25px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            z-index: 4;
-            top: 80%;
-            left: 50%;
-            transform: translateX(-50%);
+            background-color: red;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                rgba(255,255,255,0.3) 0 10px,
+                transparent 10px 20px
+            );
+            width: 400px;
+            height: 30px;
         }
 </style>
 
 </head>
 <body>
     <div class="card">
-        <img src="https://images.unsplash.com/photo-1625231334168-35067f8853ed?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZvcmQlMjBtdXN0YW5nJTIwZ3R8ZW58MHx8MHx8fDA%3D" alt="">
     </div>
 </body>
 </html>

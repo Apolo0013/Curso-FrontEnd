@@ -1,11 +1,11 @@
-@use '../../../styles/global.scss' as *;
+@use '../../../styles/function.scss' as fn;
 
 
 .conteiner-entrada {
     all: unset; // retirando o style padrao
     box-sizing: border-box;
 
-    height: rem(50);
+    height: fn.rem(50);
     background: #151416;
     border-radius: 20px;    
     display: flex;
@@ -22,7 +22,7 @@
         left: 5%;
         top: 50%;
         transform: translateY(-50%);
-        padding: rem(3);
+        padding: fn.rem(3);
         border-radius: 5px;
         width: auto;
         height: 50%;
@@ -33,7 +33,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: rem(8);
+        gap: fn.rem(8);
 
         //imagem dentro do placeholder
         .auth-ph-img {
@@ -44,25 +44,25 @@
         .auth-ph-label {
             height: 100%;
             display: flex;
-            font-size: rem(15);
+            font-size: fn.rem(15);
             align-items: center;
         }
     }
 
     .entrada-input {
-        padding: rem(5);
+        padding: fn.rem(5);
         min-width: 0;
         width: 90%;
         height: 70%;
         font-family: "Sora";
-        font-size: rem(16);
+        font-size: fn.rem(16);
         background: transparent;
         color: white;
     }
 
     .auth-show-senha {
         transition: opacity 0.3s ease;
-        margin-left: rem(5);
+        margin-left: fn.rem(5);
         height: 55%;
         aspect-ratio: 1 / 1;
     }

@@ -1,4 +1,5 @@
-@use '../../../styles/global.scss' as *;
+@use '../../../styles/function.scss' as fn;
+@use '../../../styles/palette.scss' as var;
 
 .head {
     display: grid;
@@ -19,7 +20,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: rem(20);
+        gap: fn.rem(20);
 
         li {
             cursor: pointer;
@@ -38,11 +39,11 @@
 
 
         .user-conteiner {
-            margin-right: rem(20);
-            background: $blue-500;
+            margin-right: fn.rem(20);
+            background: var.$blue-500;
             display: flex;
             align-items: center;
-            padding: rem(5);
+            padding: fn.rem(5);
             height: 80%;
             min-width: 150px;
             max-width: 220px;
@@ -107,7 +108,7 @@
 
     p {
         display: inline;
-        color: $text-main;
+        color: var.$text-main;
         font-weight: bold;
         text-align: center;
     }

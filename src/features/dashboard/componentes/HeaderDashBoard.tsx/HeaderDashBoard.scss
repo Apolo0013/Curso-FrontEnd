@@ -1,0 +1,9 @@
+@use '../../../../styles/palette.scss' as var;
+
+.head-dashboard {
+    span > .circle-gray {
+        height: 40%;
+        border-radius: 50%;
+        background: var.$text-sg;
+    }
+}

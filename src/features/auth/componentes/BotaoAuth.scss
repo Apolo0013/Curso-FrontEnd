@@ -1,10 +1,10 @@
-@use '../../../styles/global.scss' as *;
+@use '../../../styles/function.scss' as fn;
 
 
 .auth-botao-enter {
-    margin-top: rem(50);
+    margin-top: fn.rem(50);
     width: 90%;
-    height: rem(50);
+    height: fn.rem(50);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +21,7 @@
         cursor: pointer;
         
         p {
-            font-size: rem(20);
+            font-size: fn.rem(20);
             color: #fefefe;
         }
 

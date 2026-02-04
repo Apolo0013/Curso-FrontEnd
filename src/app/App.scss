@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 * {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
     font-family: 'inter', Arial, Helvetica, sans-serif;
 }
 
@@ -15,5 +15,12 @@
     overflow: hidden;
 }
 
+//sem border e outline
+button, fieldset, input {
+    border: 0;
+    outline: 0;
+}
+
 /*Fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap');
+

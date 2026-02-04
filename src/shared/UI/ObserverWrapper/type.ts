@@ -9,4 +9,6 @@ export interface Style {
 export type ParamObserver = {
     SetStyle: Dispatch<SetStateAction<Style>>
     el: HTMLDivElement
+    //Config
+    threshold?: number
 }
