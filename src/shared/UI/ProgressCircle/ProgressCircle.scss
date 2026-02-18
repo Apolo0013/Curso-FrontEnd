@@ -1,0 +1,17 @@
+$bg: #101222;
+
+.progress-circle {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    border-radius: 50%;
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        border-radius: 50%;
+        background-color: $bg;
+        inset: 3px;
+    }
+}

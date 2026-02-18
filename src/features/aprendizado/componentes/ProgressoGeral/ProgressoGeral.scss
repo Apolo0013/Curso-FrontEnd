@@ -1,0 +1,16 @@
+@use '../../../../styles/function.scss' as fn;
+
+$bg: #131528;
+
+.progresso-geral {
+    width: 40%;
+    height: 100%;
+    background: $bg;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 10% 7fr 1fr;
+    grid-template-rows: 50% 50%;
+    column-gap: fn.rem(15);
+    padding: fn.rem(5);
+    outline: 1px solid lighten($bg, 10%);
+}

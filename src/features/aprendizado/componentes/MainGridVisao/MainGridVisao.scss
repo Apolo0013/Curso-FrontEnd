@@ -1,0 +1,17 @@
+@use '../../../../styles/function.scss' as fn;
+
+$sub-bg-grid: #131528;
+$bg-grid: #101222;
+
+.main-grid-visao-curso {
+    width: 100%;
+    height: auto;
+    display: grid;  
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px auto;
+    background: $bg-grid;
+    border-radius: 10px;
+    padding: fn.rem(10);
+    margin-top: fn.rem(30);
+    row-gap: fn.rem(20);
+}

@@ -1,0 +1,11 @@
+@use '../../../../styles/function.scss' as fn;
+
+$bg: #131528;
+
+.modulos-main {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: $bg;
+    padding: fn.rem(10);
+}

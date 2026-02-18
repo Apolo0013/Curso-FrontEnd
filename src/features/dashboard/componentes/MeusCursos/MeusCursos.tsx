@@ -1,8 +1,11 @@
 import ObserverWrapper from '../../../../shared/UI/ObserverWrapper/ObserverWrapper'
+import useContentQuery from '../../hook/useContentQuery'
+
 import CardCursoDash from '../CardCurso/CardCurso'
 import './MeusCursos.scss'
 
 function MeusCursos() {
+    const { data } = useContentQuery({ idUser: 'user-001' })
     return (
         <section className="MeusCursos">
             <ObserverWrapper
@@ -15,32 +18,13 @@ function MeusCursos() {
                 <h2 className='text-main text-xl'>Meus Cursos</h2>
             </ObserverWrapper>
             <div className='grid-cursos-meus-cursos'>
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
-                <CardCursoDash />
+                {
+                    data && data.data
+                        ? data.data.map((info, key) => (
+                            <CardCursoDash idCourse={info.idCourse} key={key} />
+                        ))
+                        : null
+                }
             </div>
         </section>
     )

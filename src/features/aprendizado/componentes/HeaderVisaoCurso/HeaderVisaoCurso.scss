@@ -1,0 +1,34 @@
+@use '../../../../styles/function.scss' as fn;
+
+.header-visao-curso {
+    width: 100%;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100%;
+
+    .header-img-curso {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        //fade left
+        mask-image: linear-gradient(90deg, transparent 10%,black 30%);
+
+        .fade-bottom {
+            width: 100%;
+            height: 100%;
+            //fade bottom
+            mask-image: linear-gradient(0deg, transparent 1%,black 20%);
+
+            img {
+                position: relative;
+                z-index: 1;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                //fade top
+                mask-image: linear-gradient(180deg, transparent 0%, black 20%);
+            }        
+        }
+    }
+}

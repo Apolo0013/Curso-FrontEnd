@@ -1,0 +1,44 @@
+@use '../../../../styles/function.scss' as fn;
+
+$border: #131528;
+$bg-play-aula: #85b782;
+
+.aula-info {
+    width: 100%;
+    height: 75px;
+    outline: 2px solid $border ;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: fn.rem(5);
+    column-gap: fn.rem(5);
+
+    .play-aula-btn {
+        cursor: pointer;
+        place-self: center;
+        border-radius: 10px;
+        background: $bg-play-aula;
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        grid-row: 1 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            aspect-ratio: 1 / 1;
+            height: 50%;
+        }
+    }
+}
+
+.aula-info-lock {
+    filter: blur(1px) grayscale(100%);
+    cursor: not-allowed;
+    * {
+        cursor: not-allowed;
+        pointer-events: none;
+        user-select: none;
+    }
+}

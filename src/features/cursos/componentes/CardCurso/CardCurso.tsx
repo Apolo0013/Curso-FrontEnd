@@ -17,6 +17,7 @@ function CardCurso({title, autor, price, thumbnail, id}: Props) {
             x='0'
             opacity={0.2}
             duration='0.5s'
+            
         >
             <div className='card-curso p-3'>
                 <div className="img-card-curso">

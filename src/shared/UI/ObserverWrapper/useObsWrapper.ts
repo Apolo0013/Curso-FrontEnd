@@ -1,7 +1,7 @@
 import type { ParamObserver } from "./type"
 
 function useObserverWrapper() {
-    function Observer({ SetStyle, el, threshold}: ParamObserver) {
+    function Observer({ SetStyle, el, threshold, Setchildrenview}: ParamObserver) {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -11,9 +11,12 @@ function useObserverWrapper() {
                             y: "0",
                             opacity: 1
                         })
+                        //exbindo o filho/children
+                        Setchildrenview(true)
                         //parar de ver
                         observer.disconnect()
                     }
+                    
                 })
             },
             {

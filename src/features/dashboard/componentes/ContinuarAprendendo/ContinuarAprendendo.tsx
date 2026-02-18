@@ -14,7 +14,7 @@ function ContinuarAprendendo() {
             y='0'
         >
             <section className='continuar-aprendendo'>
-                <h2 className='text-main text-xl'>Conitnuar aprendendo</h2>
+                <h2 className='text-main text-xl'>Continuar aprendendo</h2>
                 <CardContinuar />
             </section>
         </ObserverWrapper>

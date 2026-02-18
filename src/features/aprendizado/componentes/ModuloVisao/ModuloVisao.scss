@@ -1,0 +1,59 @@
+@use '../../../../styles/function.scss' as fn;
+@use '../../../../styles/palette.scss' as var;
+
+$sub-bg: #131528;
+$bg: #212444;
+
+.module-view {
+    padding: fn.rem(10);
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 50px 8.5fr 0.7fr;
+    grid-template-rows: 50px auto;  
+    column-gap: fn.rem(10);
+    background-color: $bg;
+
+    .order-module {
+        width: 100%;
+        height: 100%;
+        background: $sub-bg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        font-size: fn.rem(20);
+        font-weight: bolder;
+        color: var.$text-main
+    }
+
+    .wraper-view-more-class {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            aspect-ratio: 1 / 1;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.2s ease-in;
+            transform: rotate(300deg);
+
+            &:hover {
+                background: darken($sub-bg, 1);
+            }
+        }
+    }
+
+    .module-view-aulas {
+        grid-column: 1 / 4;
+        display: flex;
+        flex-direction: column;
+        gap: fn.rem(15);
+        margin-top: fn.rem(10);
+        width: 100%;
+    }
+}

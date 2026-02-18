@@ -28,25 +28,30 @@ function ObserverWrapper({ children, x, y, opacity, timing_function = 'ease-in-o
         y: y,
         opacity: opacity
     })
+    //exibir sim ou nao o filho
+    const [childrenview, Setchildrenview] = useState<boolean>(false)
+
     useEffect(() => {
         if (!RefConteiner.current) return
         Observer({
             SetStyle: SetStyle,
+            Setchildrenview: Setchildrenview,
             el: RefConteiner.current,
             threshold: threshold
         })
     }, [])
+
     return (
         <div
             ref={RefConteiner}
-            className='Obs-wraper'
+            className='w-full h-full'
             style={{
                 transform: `translate(${Style.x}, ${Style.y})`,
                 opacity: Style.opacity,
                 transition: `${duration} ${timing_function}`
             }}
         >
-            {children}
+            {childrenview ? children : null}
         </div>
     )   
 }

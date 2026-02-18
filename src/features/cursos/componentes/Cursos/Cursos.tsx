@@ -10,18 +10,20 @@ function Cursos() {
     const courses = data?.data ?? []
     return (
         <main className='cursos-main'>
-            <ObserverWrapper
+            <div className='w-full h-fit'>
+                <ObserverWrapper
                 x='-100px'
                 y='0'
                 opacity={0.5}
                 duration='0.6s'
                 timing_function='ease-in-out'
-            >
-                <div className='flex flex-col gap-[5px]'>
-                    <h1 className='text-4xl font-bold text-main'>Explore nossos Cursos</h1>
-                    <p className='text-sg text-xl'>Amplie seu conhecimento com nosso cursos especializados</p>
-                </div>
-            </ObserverWrapper>
+                >
+                    <div className='flex flex-col gap-[5px] w-full h-full'>
+                        <h1 className='text-4xl font-bold text-main'>Explore nossos Cursos</h1>
+                        <p className='text-sg text-xl'>Amplie seu conhecimento com nosso cursos especializados</p>
+                    </div>
+                </ObserverWrapper>
+            </div>    
             <div className='cursos-conteiner gap-[10px]'>
                 {
                     courses.map((info, k) => (

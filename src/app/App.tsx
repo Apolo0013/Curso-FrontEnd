@@ -15,6 +15,8 @@ import CarrinhoPage from "../features/cursos/pages/carrinhopage";
 import ProtectedRouteUSER from "./ProtectedRoutes/ProtectedRoute.User";
 import ProtectedRouteGuest from "./ProtectedRoutes/ProtectedRoute.Guest";
 import DashBoardUserPage from "../features/dashboard/pages/dashboarduserpage";
+import VisaoCursoPage from "../features/aprendizado/pages/visaocursopage";
+import PlayerCursoPage from "../features/aprendizado/pages/playercursopage";
 
 function App() {
 
@@ -43,7 +45,10 @@ function App() {
                 {/*Carrinho*/}
                 <Route path='/cursos/carrinho' element={<CarrinhoPage />} />
                 {/*Rota DashBoard*/}
-                <Route path='/dashboard' element={<DashBoardUserPage/>} />
+                <Route path='/dashboard' element={<DashBoardUserPage />} />
+                {/*rotas aprendizado*/}
+                <Route path='/dashboard/:idCourse' element={<VisaoCursoPage />}/>
+                <Route path='/dashboard/:idCourse/aula/:idClass' element={<PlayerCursoPage/>} />
             </Routes>
         </main>
     )

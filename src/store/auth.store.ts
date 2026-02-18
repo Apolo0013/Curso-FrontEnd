@@ -1,6 +1,6 @@
 import { create } from "zustand";
 //Type
-import type {TUser} from '../features/auth/services/service.type'
+import {type TUser} from '../features/auth/services/service.type'
 
 type TAuthStore = {
     user: TUser,
@@ -9,7 +9,7 @@ type TAuthStore = {
 
 export const useAuthStore = create<TAuthStore>((set) => ({
     user: {
-        id: "",
+        id: "user-001",
         nome: "Apolonio",
         role: "ADMIN"
     },

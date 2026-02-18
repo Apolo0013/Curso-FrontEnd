@@ -8,7 +8,7 @@ interface TGetAllCourseResponse {
 
 export async function APIGetAllCourse(): Promise<TGetAllCourseResponse> {
     try {
-        const res = await fetch('http://localhost:5182/course/getAll', {
+        const res = await fetch('http://localhost:5182/course/get/information', {
             method: "GET"
         })
         return await res.json() as TGetAllCourseResponse

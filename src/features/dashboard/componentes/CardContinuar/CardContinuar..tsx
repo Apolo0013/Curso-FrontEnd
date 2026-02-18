@@ -1,5 +1,5 @@
 import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
-import ProgressBar from '../ProgressBar/ProgressBar'
+import ProgressBar from '../../../../shared/UI/ProgressBar/ProgressBar'
 import './CardContinuar.scss'
 
 function CardContinuar() {
