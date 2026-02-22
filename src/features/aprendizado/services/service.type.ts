@@ -10,6 +10,7 @@ export type ClassesProgres = {
     idCourse: string,
     idModule: string,
     idUser: string
+    position: number
 }
 
 export type ResponseGetProgress = {

@@ -9,7 +9,6 @@ import type { Course } from '../../../cursos/hooks/logic/type'
 //HOOK
 import { useNavigate } from 'react-router-dom'
 import useDashBoard from '../../hook/logic/useDashBoard'
-import { useAuthStore } from '../../../../store/auth.store'
 import useGetCourseByID from '../../hook/queries/useGetCourseById'
 
 type Props = {
@@ -17,14 +16,18 @@ type Props = {
 }
 
 function CardCursoDash({ idCourse }: Props) {
-    //pegando o id do usuario
-    const idUser = useAuthStore(state => state.user.id)
     //pegando informacao do curso
     const { data } = useGetCourseByID({ idCourse: idCourse, keyQuery: idCourse })
     const info: Course | null = data ? data.data : null
     //Hook
-    const { GetProgressCourse } = useDashBoard()
-    const percent = GetProgressCourse({ idCourse: idCourse, idUser: idUser }) + "%"
+    const {
+        GetProgressCourse,
+        CurrentClass
+    } = useDashBoard()
+    const percent = GetProgressCourse(idCourse) + "%"
+    //Pegando a orde numerica e o nome da aula atual
+    const infoClass = CurrentClass(idCourse!)
+    console.log(infoClass)
     //Navegador das rotas
     const nv = useNavigate()
     return (
@@ -48,13 +51,12 @@ function CardCursoDash({ idCourse }: Props) {
                     <h3 className='text-sg text-base' >Professor(a) {info ? info.author.name : ""}</h3>
                     <ProgressBar porcento={percent} />
                 </div>
-                <div className='w-full h-full grid grid-cols-2'>
-                    <p className='text-sg text-base'>Aula 1: Introducao ao React</p>
+                <div className='w-full h-full grid grid-cols-[1.5fr_1fr]'>
+                    <p className='text-sg text-base'>Aula {infoClass ? infoClass.NumberClass : ""}: {infoClass ? infoClass.NameClass : ""}</p>
                     <BotaoAction
                         bg='#324cab'
                         text='Continuar Curso'
                         height='40px'
-                        width='fit-content'
                         className='p-[5px] !text-lg text-main font-semibold justify-self-end self-end'
                         onClick={() => nv(`/dashboard/${idCourse}`)}
                     />

@@ -49,10 +49,11 @@ function usePlayer() {
     function GetIndividualClassNumber(idCourse: string, idClass: string): string | null {
         const {data} = useContent({ idUser: idUser })
         if (data && data.data && idCourse && idClass) {
-            const listOrderClass: OrderClass[] = OrdernarClasses({
-                data: data.data,
+            const listOrderClass: OrderClass[] | null = OrdernarClasses({
+                idUser: idUser,
                 idCourse: idCourse
             })
+            if (!listOrderClass) return null
             const OrderClass: OrderClass | undefined = listOrderClass.find(
                 x => x.idClass == idClass)
             if (OrderClass) return String(OrderClass.num > 9 ? OrderClass.num : "0" + OrderClass.num)

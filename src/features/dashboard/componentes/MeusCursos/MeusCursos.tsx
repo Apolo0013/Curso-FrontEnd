@@ -21,7 +21,10 @@ function MeusCursos() {
                 {
                     data && data.data
                         ? data.data.map((info, key) => (
-                            <CardCursoDash idCourse={info.idCourse} key={key} />
+                            <CardCursoDash
+                                idCourse={info.idCourse}
+                                key={key}
+                            />
                         ))
                         : null
                 }

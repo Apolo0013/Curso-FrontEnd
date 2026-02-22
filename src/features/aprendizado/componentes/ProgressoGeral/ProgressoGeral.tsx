@@ -3,16 +3,13 @@ import ProgressBar from '../../../../shared/UI/ProgressBar/ProgressBar'
 import ProgressCircle from '../../../../shared/UI/ProgressCircle/ProgressCircle'
 import useDashBoard from '../../../dashboard/hook/logic/useDashBoard'
 import './ProgressoGeral.scss'
-import { useAuthStore } from '../../../../store/auth.store'
 
 function ProgressoGeral() {
-    //id do usuario
-    const idUser = useAuthStore(state => state.user.id)
     //id do curso
     const { idCourse } = useParams()
     //HOOK
     const { GetProgressCourse } = useDashBoard()
-    const porcent: string = GetProgressCourse({idCourse: idCourse!, idUser}) + "%"
+    const porcent: string = GetProgressCourse(idCourse!) + "%"
     return (
         <div className='progresso-geral'>
             <ProgressCircle porcento={porcent} />
