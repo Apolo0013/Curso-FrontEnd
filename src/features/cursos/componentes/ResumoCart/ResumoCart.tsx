@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 import './ResumoCart.scss'
-import useCarrinho from '../../hooks/useCarrinho'
+import useCarrinho from '../../hooks/logic/useCarrinho'
 
 function ResumoCart() {
     //navagador de rotas

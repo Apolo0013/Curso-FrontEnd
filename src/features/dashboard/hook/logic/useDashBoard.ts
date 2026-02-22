@@ -1,5 +1,5 @@
-import useGetProgressQuery from "../../aprendizado/hook/useGetProgressQuery"
-import useContentQuery from "./useContentQuery"
+import useGetProgressQuery from "../../../aprendizado/hook/queries/useGetProgress"
+import useContentQuery from "../queries/useContent"
 
 function useDashBoard() {
     function GetProgressCourse({ idCourse, idUser }: { idCourse: string, idUser: string }): number {

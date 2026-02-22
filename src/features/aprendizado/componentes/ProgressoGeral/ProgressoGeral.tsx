@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import ProgressBar from '../../../../shared/UI/ProgressBar/ProgressBar'
 import ProgressCircle from '../../../../shared/UI/ProgressCircle/ProgressCircle'
-import useDashBoard from '../../../dashboard/hook/useDashBoard'
+import useDashBoard from '../../../dashboard/hook/logic/useDashBoard'
 import './ProgressoGeral.scss'
 import { useAuthStore } from '../../../../store/auth.store'
 

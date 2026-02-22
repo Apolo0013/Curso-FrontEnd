@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query"
 //Service
-import { APIRegistrar } from '../services/auth.service'
+import { APIRegistrar } from '../../services/auth.service'
 //Type
-import type {TCodeResponse, TRegistrarError, TRegistrarParam, } from '../services/service.type'
+import type {TCodeResponse, TRegistrarError, TRegistrarParam, } from '../../services/service.type'
 
 function useRegistrarService() {
     //mutation

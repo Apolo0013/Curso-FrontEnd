@@ -3,18 +3,19 @@ import './Player.scss'
 import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 //Hook
 import { useParams } from 'react-router-dom'
-import useContentQuery from '../../../dashboard/hook/useContentQuery'
+import useContentQuery from '../../../dashboard/hook/queries/useContent'
 import { useAuthStore } from '../../../../store/auth.store'
 //Type
 import type { Classes } from '../../../dashboard/services/service.types'
 //HOOK
-import usePlayer from '../../hook/usePlayer'
+import usePlayer from '../../hook/logic/usePlayer'
 
 function Player() {
     //HOOK
     const {
         handlerCompletedClass,
-        GetContentPlayer
+        GetContentPlayer,
+        GetIndividualClassNumber
     } = usePlayer()
     //pegando id do curso e a aula
     const { idClass, idCourse } = useParams()
@@ -36,6 +37,8 @@ function Player() {
             content = contentData.classes
         }
     }
+    //Numero individual da aula
+    const NumberClass: string | null = GetIndividualClassNumber(idCourse!, idClass!)
     return (
         <div className="Player">
             <div className="wraper-video">
@@ -53,7 +56,7 @@ function Player() {
                             : ""
                     }
                 </h2>
-                <h3 className='text-sg text-lg'>Aula 01: 
+                <h3 className='text-sg text-lg'>Aula {NumberClass ? NumberClass : 0}: 
                     {
                         content 
                             ? ' ' + content.title

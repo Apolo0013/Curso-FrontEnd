@@ -1,16 +1,14 @@
 import { useState } from "react"
 //type
-import type { ClassWarnEntrada, ReturnFNValideEntrada } from './hook.type'
+import type { ClassWarnEntrada, ReturnFNValideEntrada } from './type'
 //Notificao
 import { toast } from "react-toastify"
-//hook
-import useActionAuth from "./useActionAuth"
 //Service hook
-import useLoginService from "./useLoginQuery"
+import useLoginService from "../queries/useLogin"
 //Mensagem e Common
-import { authEntryMessages, authMessagesBackEnd } from "../../../shared/mensagem/auth.mensagem"
+import { authEntryMessages, authMessagesBackEnd } from "../../../../shared/mensagem/auth.mensagem"
 //valida
-import { TrataEntryLogin } from "../valida/valida.login"
+import { TrataEntryLogin } from "../../valida/valida.login"
 
 function useLogin() {
     //funcao hancdler clica botao auth, loginpage.tsx

@@ -1,8 +1,16 @@
-import type { ParamCompletedClass, ParamGetProgress, ResponseCompletedClass, ResponseGetProgress } from "./service.type"
+import type {
+    ParamCompletedClass,
+    ParamGetCourseCompleted,
+    ParamGetClassProgress,
+    ResponseGetCourseCompleted,
+    ResponseCompletedClass,
+    ResponseGetProgress
+} from "./service.type"
 
-export async function APIGetProgress({idCourse, idUser}: ParamGetProgress): Promise<ResponseGetProgress> {
+//Essa requisicao pegar as aulas ja completa
+export async function APIGetClassProgress({idCourse, idUser}: ParamGetClassProgress): Promise<ResponseGetProgress> {
     try {
-        const res = await fetch(`http://localhost:5182/course/get/progress?idCourse=${idCourse}&idUser=${idUser}`, {
+        const res = await fetch(`http://localhost:5182/course/get/class/progress?idCourse=${idCourse}&idUser=${idUser}`, {
             method: "GET"
         })
         return await res.json() as ResponseGetProgress
@@ -13,7 +21,21 @@ export async function APIGetProgress({idCourse, idUser}: ParamGetProgress): Prom
     }
 }
 
+export async function APIGetCourseCompleted({idUser}: ParamGetCourseCompleted): Promise<ResponseGetCourseCompleted> {
+    try {
+        const res = await fetch(`http://localhost:5182/course/get/course/completed?idUser=${idUser}`, {
+            method: "GET"
+        })
+        return await res.json() as ResponseGetCourseCompleted
+    }
+    catch (error) {
+        console.log(error)
+        throw(error)
+    }
+}
 
+
+//Essa requisicao vai add o ja "concluido" na aula
 export async function APICompletedClass(body: ParamCompletedClass): Promise<ResponseCompletedClass> {
     try {
         const res = await fetch("http://localhost:5182/course/completedclasse   ", {

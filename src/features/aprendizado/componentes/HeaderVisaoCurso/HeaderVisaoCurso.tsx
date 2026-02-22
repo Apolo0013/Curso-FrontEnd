@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
-import useGetCourseByID from '../../../dashboard/hook/useGetCourseByIdQuery'
+import useGetCourseByID from '../../../dashboard/hook/queries/useGetCourseById'
 import './HeaderVisaoCurso.scss'
-import type { Course } from '../../../cursos/hooks/type'
+import type { Course } from '../../../cursos/hooks/logic/type'
 
 function HeaderVisaoCurso() {
     //pegando id do curso

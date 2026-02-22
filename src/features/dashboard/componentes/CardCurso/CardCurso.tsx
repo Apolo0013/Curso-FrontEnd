@@ -5,12 +5,12 @@ import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 import ObserverWrapper from '../../../../shared/UI/ObserverWrapper/ObserverWrapper'
 import ProgressBar from '../../../../shared/UI/ProgressBar/ProgressBar'
 //Type
-import type { Course } from '../../../cursos/hooks/type'
+import type { Course } from '../../../cursos/hooks/logic/type'
 //HOOK
 import { useNavigate } from 'react-router-dom'
-import useDashBoard from '../../hook/useDashBoard'
+import useDashBoard from '../../hook/logic/useDashBoard'
 import { useAuthStore } from '../../../../store/auth.store'
-import useGetCourseByID from '../../hook/useGetCourseByIdQuery'
+import useGetCourseByID from '../../hook/queries/useGetCourseById'
 
 type Props = {
     idCourse: string

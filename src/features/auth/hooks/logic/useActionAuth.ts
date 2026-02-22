@@ -1,11 +1,11 @@
 //type
-import type { TCodeResponse, TUser } from "../services/service.type"
+import type { TCodeResponse, TUser } from "../../services/service.type"
 //service
 import useGetMe from '../hooks/useMeAuth'
 //notificao
 import { toast } from "react-toastify"
 //Mensagens
-import { authMessagesBackEnd } from "../../../shared/mensagem/auth.mensagem"
+import { authMessagesBackEnd } from "../../../../shared/mensagem/auth.mensagem"
 
 
 function useActionAuth() {

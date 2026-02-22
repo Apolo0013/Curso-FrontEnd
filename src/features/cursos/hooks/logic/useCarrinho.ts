@@ -1,6 +1,6 @@
 import { toast } from "react-toastify"
-import { useCartStore } from "../../../store/cart.store"
-import { CursoMensagem } from "../../../shared/mensagem/curso.mensagem"
+import { useCartStore } from "../../../../store/cart.store"
+import { CursoMensagem } from "../../../../shared/mensagem/curso.mensagem"
 
 
 function useCarrinho() {

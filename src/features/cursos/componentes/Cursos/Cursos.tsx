@@ -1,7 +1,7 @@
 //type
 //componente
 import ObserverWrapper from '../../../../shared/UI/ObserverWrapper/ObserverWrapper'
-import useCursosQuery from '../../hooks/useCursosQuery'
+import useCursosQuery from '../../hooks/queries/useCursos'
 import CardCurso from '../CardCurso/CardCurso'
 import './Cursos.scss'
 

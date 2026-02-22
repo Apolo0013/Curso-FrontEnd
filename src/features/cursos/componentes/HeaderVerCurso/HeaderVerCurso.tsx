@@ -2,11 +2,11 @@ import './HeaderVerCurso.scss'
 //React
 import { useParams } from 'react-router-dom'
 //Type
-import type { Course } from '../../hooks/type'
+import type { Course } from '../../hooks/logic/type'
 //UI
 import Avatar from '../../../../shared/UI/Avatar/Avatar'
-import useCursosQuery from '../../hooks/useCursosQuery'
-import useCurso from '../../hooks/useCursos'
+import useCursosQuery from '../../hooks/queries/useCursos'
+import useCurso from '../../hooks/logic/useCursos'
 
 function HeaderVerCurso() {
     //id curso

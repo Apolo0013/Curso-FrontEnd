@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 //Service
-import {APIMe} from '../services/auth.service'
+import {APIMe} from '../../services/auth.service'
 
 function GetMeAuth() {
     const query = useQuery({

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 //Service 
-import { APIGetAllCourse } from '../services/course.service'
+import { APIGetAllCourse } from '../../services/course.service'
 
 function useCursosQuery() {    
     return useQuery({

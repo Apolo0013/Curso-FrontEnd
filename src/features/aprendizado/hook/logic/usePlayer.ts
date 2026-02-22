@@ -1,8 +1,15 @@
 import { useNavigate } from "react-router-dom"
-import type { ParamCompletedClass,} from "../services/service.type"
+//Type
+import type { ParamCompletedClass,} from "../../services/service.type"
 import type { ParamGetContentPlayer, ContentInfo, ContentInfoList} from "./type"
 //Query
-import useCompletedQuery from "./useCompletedClassQuery"
+import useCompletedQuery from "../queries/useCompletedClass"
+import useContent from "../../../dashboard/hook/queries/useContent"
+//Store
+import { useAuthStore } from "../../../../store/auth.store"
+//Utils
+import { OrdernarClasses } from "../../../../shared/utils/orderClasses"
+import type { OrderClass } from "../../../../shared/utils/type"
 
 
 function usePlayer() {
@@ -38,13 +45,33 @@ function usePlayer() {
         return null
     }
 
+    //Essa funcao vai retorna o numero da aula atual
+    function GetIndividualClassNumber(idCourse: string, idClass: string): string | null {
+        const {data} = useContent({ idUser: idUser })
+        if (data && data.data && idCourse && idClass) {
+            const listOrderClass: OrderClass[] = OrdernarClasses({
+                data: data.data,
+                idCourse: idCourse
+            })
+            const OrderClass: OrderClass | undefined = listOrderClass.find(
+                x => x.idClass == idClass)
+            if (OrderClass) return String(OrderClass.num > 9 ? OrderClass.num : "0" + OrderClass.num)
+            else return null
+        }
+        return null
+    }
+
+
     const mtCompletedClass = useCompletedQuery()
     //navagar pelar rotas
     const nv = useNavigate()
+    //Id do usuario
+    const idUser: string = useAuthStore(state => state.user.id)
 
     return {
         handlerCompletedClass,
-        GetContentPlayer
+        GetContentPlayer,
+        GetIndividualClassNumber,
     }
 }
 

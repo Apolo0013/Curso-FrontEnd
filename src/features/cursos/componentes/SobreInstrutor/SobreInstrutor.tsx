@@ -3,10 +3,10 @@ import './SobreInstrutor.scss'
 //UI
 import Avatar from '../../../../shared/UI/Avatar/Avatar'
 //Hook
-import useCursos from '../../hooks/useCursos'
-import useCursosQuery from '../../hooks/useCursosQuery'
+import useCursos from '../../hooks/logic/useCursos'
+import useCursosQuery from '../../hooks/queries/useCursos'
 //type
-import type { Course } from '../../hooks/type'
+import type { Course } from '../../hooks/logic/type'
 
 function SobreInstrutor() {
     //pegando o id do cursos via rotas

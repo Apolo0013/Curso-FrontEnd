@@ -1,5 +1,5 @@
 //hook
-import useRegistrar from '../hooks/useRegistrar'
+import useRegistrar from '../hooks/logic/useRegistrar'
 //Componetes
 import BackAuth from "../componentes/BackAuth"
 import Entrada from "../componentes/Entrada"

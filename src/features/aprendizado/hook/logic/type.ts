@@ -1,4 +1,4 @@
-import type { Classes, CourseContent } from "../../dashboard/services/service.types"
+import type { Classes, CourseContent } from "../../../dashboard/services/service.types"
 
 export type ParamIsAvaliable = {
     idCourse: string,
@@ -10,5 +10,6 @@ export type ParamGetContentPlayer = {
     data: CourseContent[],
     idClass: string
 }
+//usePlayer
 export type ContentInfoList = {classes: Classes[], idModule: string}[]
-export type ContentInfo = {classes: Classes | null, idModule: string}
+export type ContentInfo = { classes: Classes | null, idModule: string }

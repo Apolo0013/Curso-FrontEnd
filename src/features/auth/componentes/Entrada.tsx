@@ -7,7 +7,7 @@ import ImgText from '../assets/ico/ico-text.svg'
 import ImgOlhoOn from '../assets/ico/ico-olho.svg'
 import ImgOlhoOff from '../assets/ico/ico-olho-fechado.svg'
 //type
-import type {ClassWarnEntrada} from '../hooks/hook.type'
+import type {ClassWarnEntrada} from '../hooks/logic/type'
 //
 type typeInput = 'text' | "password" | 'email'
 

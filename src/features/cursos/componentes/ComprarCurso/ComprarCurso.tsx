@@ -2,13 +2,13 @@ import './ComprarCurso.scss'
 //react
 import { useNavigate, useParams } from 'react-router-dom'
 //type
-import type { Course } from '../../hooks/type'
+import type { Course } from '../../hooks/logic/type'
 //UI
 import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 //HOOK
-import useVerCurso from '../../hooks/useVerCurso'
-import useCursos from '../../hooks/useCursos'
-import useCursosQuery from '../../hooks/useCursosQuery'
+import useVerCurso from '../../hooks/logic/useVerCurso'
+import useCursos from '../../hooks/logic/useCursos'
+import useCursosQuery from '../../hooks/queries/useCursos'
 
 function ComprarCurso() {
     //peganddo o id do curso via rota

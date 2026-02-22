@@ -1,8 +1,8 @@
 import { toast } from "react-toastify"
-import { useCartStore, type ItemCart } from "../../../store/cart.store"
+import { useCartStore, type ItemCart } from "../../../../store/cart.store"
 import type { Course } from "./type"
 //mensagens
-import { CursoMensagem } from "../../../shared/mensagem/curso.mensagem"
+import { CursoMensagem } from "../../../../shared/mensagem/curso.mensagem"
 import { useNavigate } from "react-router-dom"
 
 

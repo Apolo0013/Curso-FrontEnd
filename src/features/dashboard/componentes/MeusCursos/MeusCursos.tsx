@@ -1,11 +1,11 @@
 import ObserverWrapper from '../../../../shared/UI/ObserverWrapper/ObserverWrapper'
-import useContentQuery from '../../hook/useContentQuery'
+import useContent from '../../hook/queries/useContent'
 
 import CardCursoDash from '../CardCurso/CardCurso'
 import './MeusCursos.scss'
 
 function MeusCursos() {
-    const { data } = useContentQuery({ idUser: 'user-001' })
+    const { data } = useContent({ idUser: 'user-001' })
     return (
         <section className="MeusCursos">
             <ObserverWrapper

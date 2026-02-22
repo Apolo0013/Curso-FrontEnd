@@ -1,10 +1,10 @@
 import ObserverWrapper from '../../../../shared/UI/ObserverWrapper/ObserverWrapper'
 import { useAuthStore } from '../../../../store/auth.store'
-import useContentQuery from '../../hook/useContentQuery'
+import useContent from '../../hook/queries/useContent'
 import './HeaderDashBoard.scss'
 
 function HeaderDashBoard() {
-    const {data} = useContentQuery({idUser: 'user-001'})
+    const {data} = useContent({idUser: 'user-001'})
     //store
     const nome = useAuthStore(state => state.user.nome)
     return (

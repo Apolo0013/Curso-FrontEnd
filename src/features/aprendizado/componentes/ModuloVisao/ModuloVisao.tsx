@@ -6,6 +6,8 @@ import { useState } from 'react'
 import type { Classes } from '../../../dashboard/services/service.types'
 //Componentes
 import AulaInfo from '../AulaInfo/AulaInfo'
+import useModule from '../../hook/logic/useModule'
+import { useParams } from 'react-router-dom'
 
 type Props = {
     title: string
@@ -14,6 +16,9 @@ type Props = {
 }
 
 function ModuloVisao({ order, title, aulas }: Props) {
+    const {idCourse} = useParams()
+    //HOOK
+    const {ThisClassCompleted} = useModule()
     //O botao de mostrar as aula esta ativada?
     const [clickshow, setclickshow] = useState<boolean>(true)
     return (
@@ -35,6 +40,12 @@ function ModuloVisao({ order, title, aulas }: Props) {
                 {
                     aulas.map((info, key) => (
                         <AulaInfo
+                            completed={
+                                ThisClassCompleted({
+                                        idClass: info.idClass,
+                                        idCourse: idCourse!
+                                    })
+                            }
                             aulaInfo={info}
                             key={key}
                         />

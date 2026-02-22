@@ -1,4 +1,5 @@
 import Header from "../../../shared/componentes/Header/Header";
+import { useAuthStore } from "../../../store/auth.store";
 import BackAprendizado from "../componentes/BackAprendizado/BackAprendizado";
 import HeaderVisaoCurso from "../componentes/HeaderVisaoCurso/HeaderVisaoCurso";
 import MainGrid from "../componentes/MainGridVisao/MainGridVisao";

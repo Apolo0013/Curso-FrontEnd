@@ -6,7 +6,7 @@ import Player from "../componentes/Player/Player"
 //HOOK
 import { useParams } from "react-router-dom";
 import { useAuthStore } from "../../../store/auth.store";
-import useContentQuery from "../../dashboard/hook/useContentQuery";
+import useContentQuery from "../../dashboard/hook/queries/useContent";
 //Type
 import type { Classes } from "../../dashboard/services/service.types";
 

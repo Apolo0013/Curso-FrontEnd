@@ -6,7 +6,7 @@ import OpcaoAuth from "../componentes/OpcaoAuth"
 //Rota
 import { Link } from "react-router-dom"
 //hook
-import useLogin from "../hooks/useLogin"
+import useLogin from "../hooks/logic/useLogin"
 
 function LoginPage() {
     //hook

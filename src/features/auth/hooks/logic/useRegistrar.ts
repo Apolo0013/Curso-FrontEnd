@@ -3,14 +3,13 @@ import { toast } from "react-toastify";
 //react
 import { useState } from "react"
 //type
-import type { ReturnFNValideEntrada, ClassWarnEntrada } from "./hook.type"
+import type { ReturnFNValideEntrada, ClassWarnEntrada } from "../logic/type"
 //Service
-import useRegistrarService from "./useRegistrarQuery";
+import useRegistrarService from "../queries/useRegistrar";
 //Mensagem E Common
-import {authMessagesBackEnd, authEntryMessages} from '../../../shared/mensagem/auth.mensagem'
+import {authMessagesBackEnd, authEntryMessages} from '../../../../shared/mensagem/auth.mensagem'
 //Funcoes valida
-import {TrataEntradasRegistrar} from '../valida/valida.registrar'
-import useActionAuth from "./useActionAuth";
+import {TrataEntradasRegistrar} from '../../valida/valida.registrar'
 
 //obterNamePage.tsx e registrarpage.tsx, compatilhar esse mesmo hook.
 function useRegistrar() {

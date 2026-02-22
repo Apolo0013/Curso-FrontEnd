@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import type { Classes } from '../../../dashboard/services/service.types'
 import './MenuAulas.scss'
 import { useAuthStore } from '../../../../store/auth.store'
-import useIsAvailable from '../../hook/useAprendizado'
+import useIsAvailable from '../../hook/logic/useIsAvailable'
 //imagens
 import ImgPadLock from '../../assets/ico-padlock.svg'
 

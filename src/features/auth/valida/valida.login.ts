@@ -1,4 +1,4 @@
-import type { ReturnFNValideEntrada, ParamTrataEntryLogin } from "../hooks/hook.type"
+import type { ReturnFNValideEntrada, ParamTrataEntryLogin } from "../hooks/logic/type"
 import { CodeCommonAuthEntry } from "../../../shared/common/auth.common"
 
 export async function TrataEntryLogin(data: ParamTrataEntryLogin): Promise<ReturnFNValideEntrada> {

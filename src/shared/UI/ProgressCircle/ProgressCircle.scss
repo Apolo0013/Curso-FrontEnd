@@ -5,6 +5,7 @@ $bg: #101222;
     width: 100%;
     border-radius: 50%;
     position: relative;
+    transition: 1s;
     
     &::before {
         content: '';

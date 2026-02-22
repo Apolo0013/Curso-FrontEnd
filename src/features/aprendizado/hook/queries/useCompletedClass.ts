@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import type { ParamCompletedClass, ResponseCompletedClass } from "../services/service.type";
-import { APICompletedClass } from "../services/service.aprendizado";
+import type { ParamCompletedClass, ResponseCompletedClass } from "../../services/service.type";
+import { APICompletedClass } from "../../services/service.aprendizado";
 
 function useCompletedQuery() {
     return useMutation<

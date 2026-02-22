@@ -2,7 +2,7 @@
 import Avatar from '../../../../shared/UI/Avatar/Avatar'
 import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 //hook
-import useCarrinho from '../../hooks/useCarrinho'
+import useCarrinho from '../../hooks/logic/useCarrinho'
 //scss
 import './CardItem.scss'
 

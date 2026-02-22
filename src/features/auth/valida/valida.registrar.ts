@@ -1,4 +1,4 @@
-import type { ReturnFNValideEntrada, ParamEntryRegister } from "../hooks/hook.type"
+import type { ReturnFNValideEntrada, ParamEntryRegister } from "../hooks/logic/type"
 import {CodeCommonAuthEntry} from '../../../shared/common/auth.common'
 
 export function TrataEntradasRegistrar(entry: ParamEntryRegister): ReturnFNValideEntrada  {

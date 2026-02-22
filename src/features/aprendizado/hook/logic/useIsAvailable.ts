@@ -1,6 +1,6 @@
-import type { ClassesProgres } from "../services/service.type"
+import type { ClassesProgres } from "../../services/service.type"
 import type { ParamIsAvaliable } from "./type"
-import useGetProgressQuery from "./useGetProgressQuery"
+import useGetProgressQuery from "../queries/useGetProgress"
 
 function useIsAvailable({ idCourse, idUser, idClass }: ParamIsAvaliable): boolean {
     const {data} = useGetProgressQuery({idCourse: idCourse, idUser: idUser})

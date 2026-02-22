@@ -1,4 +1,4 @@
-import { type TCodeCommonAuthEntry } from '../../../shared/common/auth.common'
+import { type TCodeCommonAuthEntry } from '../../../../shared/common/auth.common'
 
 //retorno e parametro da funcao TrataEntradasRegistrar useRegistrar.tsx
 export type ParamEntryRegister = {

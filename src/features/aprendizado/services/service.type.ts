@@ -1,4 +1,5 @@
-export type ParamGetProgress = {
+// APIGetClassProgress
+export type ParamGetClassProgress = {
     idCourse: string,
     idUser: string
 }
@@ -17,7 +18,7 @@ export type ResponseGetProgress = {
     data: ClassesProgres[]
 }
 
-//CompletedCourse
+// APICompletedClass
 export type ParamCompletedClass = {
     idCourse: string,
     idModule: string,
@@ -25,4 +26,18 @@ export type ParamCompletedClass = {
     idUser: string
 }
 
+//
 export type ResponseCompletedClass = {}
+
+// APIGetCourseProgress
+export type ParamGetCourseCompleted = { idUser: string }
+type CourseCompleted = {
+    id: string,
+    idUser: string,
+    idCourse: string
+}
+export type ResponseGetCourseCompleted = {
+    sucesso: boolean,
+    code: string,
+    data: CourseCompleted[]
+}

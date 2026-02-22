@@ -1,4 +1,4 @@
-import type { Course } from "../../cursos/hooks/type"
+import type { Course } from "../../cursos/hooks/logic/type"
 
 //API Get Content
 export type ParamGetContent = {
