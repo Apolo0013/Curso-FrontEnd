@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+# Cursos-Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação Frontend de uma plataforma de cursos online desenvolvida com foco em prática de arquitetura, organização de projeto e integração com backend.
 
-Currently, two official plugins are available:
+Este projeto simula um ambiente de venda e consumo de cursos, incluindo autenticação, controle de acesso e visualização de aulas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📌 Objetivo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Projeto desenvolvido exclusivamente para prática e consolidação de conhecimentos em:
 
-## Expanding the ESLint configuration
+* Arquitetura Frontend
+* Integração com API
+* Gerenciamento de estado assíncrono
+* Organização de código escalável
+* Estruturação de projetos maiores
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Não se trata de um produto final, mas de um projeto de evolução técnica.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠 Tecnologias Utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* HTML
+* CSS
+* SCSS
+* JavaScript
+* TypeScript
+* React
+
+---
+
+## 🚀 Funcionalidades
+
+* Sistema de Login
+* Simulação de compra de cursos
+* Dashboard com listagem de cursos adquiridos
+* Visualização de cursos disponíveis
+* Player para assistir aulas
+* Controle de acesso baseado na compra do curso
+* Proteção de rotas
+
+---
+
+## 🧠 Conceitos Aplicados
+
+* Separação de responsabilidades
+* Componentização
+* Organização por features
+* Consumo de API
+* Tratamento de estados de loading e erro
+* Controle de acesso no frontend
+* Estrutura escalável de projeto
+
+---
+
+## 📂 Estrutura do Projeto
+
+Organizado visando escalabilidade, separando:
+
+* UI
+* Hooks
+* Features
+* Store
+* Serviços de requisição
+
+---
+
+## ▶ Como Executar
+
+1. Clonar o repositório
+2. Instalar as dependências:
+
+```
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Executar o projeto:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+npm run dev
+```
+
+O projeto roda localmente e depende do backend correspondente para funcionamento completo.
+
+---
+
+## 📎 Observações
+
+* Sistema de compra é apenas simulado.
+* Projeto desenvolvido para fins de prática.
+* Backend separado em outro repositório.
+
+---
+
+## 📈 Evolução Técnica
+
+Este projeto representa o maior já desenvolvido até o momento, aplicando arquitetura real e integração completa com backend.
+
+Foi fundamental para consolidar conhecimentos em React, TypeScript e organização de aplicações maiores.
+
+---
+
+## 🔜 Possíveis Melhorias Futuras
+
+* Melhorias de UI/UX
+* Testes automatizados
+* Melhor tratamento de erros
+* Persistência mais robusta
+* Deploy
+
+---
+
+Projeto desenvolvido para evolução técnica e prática de desenvolvimento frontend.
