@@ -6,7 +6,7 @@ import type { ParamGetContent } from "../../services/service.types";
 //esse hook vai fazer a requisicao do conteudo do cursos
 function useContent({idUser}: ParamGetContent) {
     return useQuery({
-        queryKey: ["contentCourse"],
+        queryKey: ["contentCourse " + idUser],
         queryFn: () => APIGetContent({idUser: idUser})
     })
 }

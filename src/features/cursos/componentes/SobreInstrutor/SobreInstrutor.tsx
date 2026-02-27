@@ -4,15 +4,15 @@ import './SobreInstrutor.scss'
 import Avatar from '../../../../shared/UI/Avatar/Avatar'
 //Hook
 import useCursos from '../../hooks/logic/useCursos'
-import useCursosQuery from '../../hooks/queries/useCursos'
 //type
 import type { Course } from '../../hooks/logic/type'
+import useGetAllCourses from '../../../../shared/hook/queries/useGetAllCourses'
 
 function SobreInstrutor() {
     //pegando o id do cursos via rotas
     const { idCourse } = useParams()
     //Hook
-    const { data } = useCursosQuery()
+    const { data } = useGetAllCourses()
     const {GetByID} = useCursos()
     const course : Course | undefined = GetByID(
         data ? data!.data: undefined,

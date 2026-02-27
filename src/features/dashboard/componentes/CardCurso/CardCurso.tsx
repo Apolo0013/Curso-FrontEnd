@@ -1,4 +1,3 @@
-
 import './CardCurso.scss'
 //Componentes
 import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
@@ -10,12 +9,16 @@ import type { Course } from '../../../cursos/hooks/logic/type'
 import { useNavigate } from 'react-router-dom'
 import useDashBoard from '../../hook/logic/useDashBoard'
 import useGetCourseByID from '../../hook/queries/useGetCourseById'
+import useGetProgress from '../../../aprendizado/hook/queries/useGetProgress'
+import { useAuthStore } from '../../../../store/auth.store'
 
 type Props = {
     idCourse: string
 }
 
-function CardCursoDash({ idCourse }: Props) {
+function CardCurso({ idCourse }: Props) {
+    //idUser
+    const idUser = useAuthStore(state => state.user.id)
     //pegando informacao do curso
     const { data } = useGetCourseByID({ idCourse: idCourse, keyQuery: idCourse })
     const info: Course | null = data ? data.data : null
@@ -24,10 +27,17 @@ function CardCursoDash({ idCourse }: Props) {
         GetProgressCourse,
         CurrentClass
     } = useDashBoard()
+    //Porcentual do curso
     const percent = GetProgressCourse(idCourse) + "%"
+    //Pegando as aulas em progressos
+    const ClassProgress = useGetProgress({idCourse: idCourse, idUser: idUser})
     //Pegando a orde numerica e o nome da aula atual
-    const infoClass = CurrentClass(idCourse!)
-    console.log(infoClass)
+    const infoClass = CurrentClass({
+        ClasseProgress: ClassProgress && ClassProgress.data
+            ? ClassProgress.data.data
+            : null,
+        idCourse: idCourse
+    })
     //Navegador das rotas
     const nv = useNavigate()
     return (
@@ -66,4 +76,4 @@ function CardCursoDash({ idCourse }: Props) {
     )
 }
 
-export default CardCursoDash
+export default CardCurso

@@ -1,16 +1,16 @@
 import { useParams } from 'react-router-dom'
 import './SobreCurso.scss'
 //Hook
-import useCursosQuery from '../../hooks/queries/useCursos'
 import useCurso from '../../hooks/logic/useCursos'
 //type 
 import type { Course } from '../../hooks/logic/type'
+import useGetAllCourses from '../../../../shared/hook/queries/useGetAllCourses'
 
 function SobreCurso() {
     //pegando paramentro via  rota
     const { idCourse } = useParams()
     //Hook
-    const { data } = useCursosQuery()
+    const { data } = useGetAllCourses()
     const {GetByID} = useCurso()
     //acessanddo o store, e pegandod o curso
     const course: Course | undefined = GetByID(

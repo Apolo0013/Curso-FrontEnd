@@ -28,8 +28,7 @@ export type TMeResponse = {
 }
 
 //Type usuario
-type Role = "USER" | "ADMIN" | "GUEST"
-
+export type Role = "USER" | "ADMIN" | "GUEST"
 
 export type TUser = {
     id: string,

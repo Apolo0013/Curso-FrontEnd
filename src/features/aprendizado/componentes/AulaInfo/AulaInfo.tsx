@@ -26,7 +26,6 @@ function AulaInfo({ aulaInfo, completed}: Props) {
         idCourse: idCourse!,
         idUser: idUser
     })
-
     return (
         <div className={`aula-info ${!available ? 'aula-info-lock' : ''}`}>
             <div className="play-aula-btn"

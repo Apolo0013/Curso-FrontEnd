@@ -5,7 +5,7 @@ import useGetProgress from "../../../aprendizado/hook/queries/useGetProgress"
 import type { ClassesProgres } from "../../../aprendizado/services/service.type"
 import type { Classes } from "../../services/service.types"
 import useContent from "../queries/useContent"
-import type { ReturnCurrentClass } from "./type"
+import type { ParamCurrentClass, ReturnCurrentClass } from "./type"
 
 function useDashBoard() {
     function GetProgressCourse(idCourse: string): number {
@@ -32,9 +32,8 @@ function useDashBoard() {
 
     //Essa funcao so vai servi aqui.
     function GetTitleClass(idClass: string): string | null {
-        const { data } = useContent({ idUser: idUser })
-        if (data && data.data) {
-            const classes: Classes[] = data.data
+        if (ContentClass && ContentClass.data && ContentClass.data.data) {
+            const classes: Classes[] = ContentClass.data.data
                 .flatMap(x => x.modules)
                 .flatMap(x => x.classes)
             const classe: Classes | undefined = classes.find(x => x.idClass == idClass)
@@ -44,20 +43,23 @@ function useDashBoard() {
         return null
     }
 
-    function CurrentClass(idCourse: string): ReturnCurrentClass | null {
+    function CurrentClass({
+        ClasseProgress,
+        idCourse
+    }: ParamCurrentClass): ReturnCurrentClass | null {
         //Essa funcao vai retorna duas coisas
         // - NumberClass: Numerecao da aula
         // - NameClass: Nome da aula
-        //Pegando as aulas ja completas
-        const { data } = useGetProgress({ idCourse: idCourse, idUser: idUser })
+        const { data } = ContentCourses
+        if (!data) return null
         //Ordernandos as aulas por numeros
         const OrderClass: OrderClass[] | null = OrdernarClasses({
             idCourse: idCourse,
-            idUser: idUser
+            data: data.data
         })
-        if (OrderClass && data && data.data) {
+        if (OrderClass && ClasseProgress) {
             //Pegando a ultima aula/class completa
-            const classe: ClassesProgres = data.data[data.data.length - 1]
+            const classe: ClassesProgres = ClasseProgress[ClasseProgress.length - 1]
             //procurando ele no orderclass, para pegar a order numerica
             const classOrder: OrderClass | undefined = OrderClass.find(x => x.idClass == classe.idClass)
             //caso classOrder seja null
@@ -78,6 +80,10 @@ function useDashBoard() {
 
     //id do usuario
     const idUser = useAuthStore(state => state.user.id)
+    //Conteudo das aulas
+    const ContentClass = useContent({ idUser: idUser })
+    //Conteudo do curso
+    const ContentCourses = useContent({idUser: idUser})
 
     return {
         GetProgressCourse,

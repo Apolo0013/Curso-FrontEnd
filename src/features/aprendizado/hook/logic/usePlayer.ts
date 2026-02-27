@@ -15,7 +15,6 @@ import type { OrderClass } from "../../../../shared/utils/type"
 function usePlayer() {
     async function handlerCompletedClass(body: ParamCompletedClass) {
         await mtCompletedClass.mutateAsync(body)
-        console.log()
         nv(`/dashboard/${body.idCourse}`)
     }
 
@@ -24,9 +23,7 @@ function usePlayer() {
         const modules: ContentInfoList = data
             .flatMap(x => x.modules)
             .map(x => ({ classes: x.classes, idModule: x.idModule }))
-        console.log(data)
         //procurando a class
-        console.log(modules)
         const contentInfo = modules
             .map((x): ContentInfo => {
                 const contentTemp = x.classes.find(x => x.idClass == idClass) ?? null
@@ -50,7 +47,10 @@ function usePlayer() {
         const {data} = useContent({ idUser: idUser })
         if (data && data.data && idCourse && idClass) {
             const listOrderClass: OrderClass[] | null = OrdernarClasses({
-                idUser: idUser,
+                data: ContentCourses && ContentCourses.data
+                    ? ContentCourses.data.data
+                    : null
+                    ,
                 idCourse: idCourse
             })
             if (!listOrderClass) return null
@@ -68,6 +68,8 @@ function usePlayer() {
     const nv = useNavigate()
     //Id do usuario
     const idUser: string = useAuthStore(state => state.user.id)
+    //Conteudo do curso
+    const ContentCourses = useContent({idUser: idUser})
 
     return {
         handlerCompletedClass,

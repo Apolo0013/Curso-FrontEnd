@@ -3,53 +3,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //
 import './App.scss'
-//Rotas
-import { Route, Routes } from 'react-router-dom'
-//Paginas
-import LoginPage from '../features/auth/pages/loginpage'
-import RegistrarPage from '../features/auth/pages/registrarpage'
-import CursoPage from "../features/cursos/pages/cursopage";
-import VerCursoPage from "../features/cursos/pages/vercursopage";
-import CarrinhoPage from "../features/cursos/pages/carrinhopage";
-//Protecao das rotas
-import ProtectedRouteUSER from "./ProtectedRoutes/ProtectedRoute.User";
-import ProtectedRouteGuest from "./ProtectedRoutes/ProtectedRoute.Guest";
-import DashBoardUserPage from "../features/dashboard/pages/dashboarduserpage";
-import VisaoCursoPage from "../features/aprendizado/pages/visaocursopage";
-import PlayerCursoPage from "../features/aprendizado/pages/playercursopage";
+import RoutesMain from "./route/routes";
 
 function App() {
 
     return (
         <main className="App">
-            <ToastContainer/>
-            <Routes>
-                {/*Rotas AUTH*/}
-                <Route path='/auth/login' element={
-                    <ProtectedRouteGuest>
-                        <LoginPage />
-                    </ProtectedRouteGuest>
-                }></Route>
-                <Route path='/auth/cadastro' element={
-                    <ProtectedRouteGuest>
-                        <RegistrarPage />
-                    </ProtectedRouteGuest>
-                }></Route>
-                {/*Rotas Cursos*/}
-                <Route path="/cursos" element={
-                    <ProtectedRouteUSER>
-                        <CursoPage />
-                    </ProtectedRouteUSER>
-                } />
-                <Route path='/cursos/ver/:idCourse' element={<VerCursoPage />} />
-                {/*Carrinho*/}
-                <Route path='/cursos/carrinho' element={<CarrinhoPage />} />
-                {/*Rota DashBoard*/}
-                <Route path='/dashboard' element={<DashBoardUserPage />} />
-                {/*rotas aprendizado*/}
-                <Route path='/dashboard/:idCourse' element={<VisaoCursoPage />}/>
-                <Route path='/dashboard/:idCourse/aula/:idClass' element={<PlayerCursoPage/>} />
-            </Routes>
+            <ToastContainer />
+            <RoutesMain />
         </main>
     )
 }

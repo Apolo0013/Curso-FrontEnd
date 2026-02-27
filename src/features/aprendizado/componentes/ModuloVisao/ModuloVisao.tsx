@@ -8,6 +8,8 @@ import type { Classes } from '../../../dashboard/services/service.types'
 import AulaInfo from '../AulaInfo/AulaInfo'
 import useModule from '../../hook/logic/useModule'
 import { useParams } from 'react-router-dom'
+import { useAuthStore } from '../../../../store/auth.store'
+import useGetProgress from '../../hook/queries/useGetProgress'
 
 type Props = {
     title: string
@@ -16,9 +18,12 @@ type Props = {
 }
 
 function ModuloVisao({ order, title, aulas }: Props) {
-    const {idCourse} = useParams()
+    //id course e user
+    const { idCourse } = useParams()
+    const idUser = useAuthStore(state => state.user.id)
+    const { data } = useGetProgress({ idUser: idUser, idCourse: idCourse!})
     //HOOK
-    const {ThisClassCompleted} = useModule()
+    const { ThisClassCompleted } = useModule()
     //O botao de mostrar as aula esta ativada?
     const [clickshow, setclickshow] = useState<boolean>(true)
     return (
@@ -42,10 +47,10 @@ function ModuloVisao({ order, title, aulas }: Props) {
                         <AulaInfo
                             completed={
                                 ThisClassCompleted({
-                                        idClass: info.idClass,
-                                        idCourse: idCourse!
-                                    })
-                            }
+                                    idClass: info.idClass,
+                                    idCourse: idCourse,
+                                    ClasseProgress: data ? data.data : null
+                                })}
                             aulaInfo={info}
                             key={key}
                         />

@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom'
 import type { Course } from '../../hooks/logic/type'
 //UI
 import Avatar from '../../../../shared/UI/Avatar/Avatar'
-import useCursosQuery from '../../hooks/queries/useCursos'
 import useCurso from '../../hooks/logic/useCursos'
+import useGetAllCourses from '../../../../shared/hook/queries/useGetAllCourses'
 
 function HeaderVerCurso() {
     //id curso
     const { idCourse } = useParams()
     //Hook
-    const { data } = useCursosQuery()
+    const { data } = useGetAllCourses()
     const {GetByID} = useCurso()
     //pegando o curso via store
     const course: Course | undefined = GetByID(

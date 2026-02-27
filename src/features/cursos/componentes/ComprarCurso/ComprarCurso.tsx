@@ -8,13 +8,13 @@ import BotaoAction from '../../../../shared/UI/ButtonAction/ButtonAction'
 //HOOK
 import useVerCurso from '../../hooks/logic/useVerCurso'
 import useCursos from '../../hooks/logic/useCursos'
-import useCursosQuery from '../../hooks/queries/useCursos'
+import useGetAllCourses from '../../../../shared/hook/queries/useGetAllCourses'
 
 function ComprarCurso() {
     //peganddo o id do curso via rota
     const { idCourse } = useParams()
     //fazendo a requisicao
-    const { data } = useCursosQuery()
+    const { data } = useGetAllCourses()
     //pegando o curso alvo
     const {GetByID} = useCursos()
     const course : Course | undefined = GetByID(

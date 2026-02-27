@@ -1,7 +1,7 @@
 import ObserverWrapper from '../../../../shared/UI/ObserverWrapper/ObserverWrapper'
 import useContent from '../../hook/queries/useContent'
 
-import CardCursoDash from '../CardCurso/CardCurso'
+import CardCurso from '../CardCurso/CardCurso'
 import './MeusCursos.scss'
 
 function MeusCursos() {
@@ -21,7 +21,7 @@ function MeusCursos() {
                 {
                     data && data.data
                         ? data.data.map((info, key) => (
-                            <CardCursoDash
+                            <CardCurso
                                 idCourse={info.idCourse}
                                 key={key}
                             />

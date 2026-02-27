@@ -1,17 +1,15 @@
-import useContent from "../../features/dashboard/hook/queries/useContent"
+import type { CourseContent } from "../../features/dashboard/services/service.types"
 import type { OrderClass } from "./type"
 
-export function OrdernarClasses({idCourse, idUser}: {
+export function OrdernarClasses({idCourse, data}: {
     idCourse: string,
-    idUser: string
+    data: CourseContent[] | null
 }): OrderClass[] | null {
     //essa funcao retorna uma lista com class orndenadas
-    //data
-    const { data } = useContent({ idUser: idUser })
-    if (data && data.data) {
+    if (data) {
         const listOrderClass: OrderClass[] = []
         let num: number = 1
-        const ContentModules = data.data
+        const ContentModules = data
             .filter(x => x.idCourse == idCourse)
             .flatMap(x => x.modules)
             .sort((a, b) => a.order - b.order)

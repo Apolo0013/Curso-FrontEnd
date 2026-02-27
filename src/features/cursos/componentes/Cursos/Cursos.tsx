@@ -1,13 +1,14 @@
 //type
 //componente
 import ObserverWrapper from '../../../../shared/UI/ObserverWrapper/ObserverWrapper'
-import useCursosQuery from '../../hooks/queries/useCursos'
+import useGetAllCourses from '../../../../shared/hook/queries/useGetAllCourses'
+import type { Course } from '../../hooks/logic/type'
 import CardCurso from '../CardCurso/CardCurso'
 import './Cursos.scss'
 
 function Cursos() {
-    const { data } = useCursosQuery()
-    const courses = data?.data ?? []
+    const { data } = useGetAllCourses()
+    const courses: Course[] | null = data && data.data ? data.data : null
     return (
         <main className='cursos-main'>
             <div className='w-full h-fit'>
@@ -26,16 +27,18 @@ function Cursos() {
             </div>    
             <div className='cursos-conteiner gap-[10px]'>
                 {
-                    courses.map((info, k) => (
-                        <CardCurso
-                            key={k}
-                            id={info.id}
-                            title={info.title}
-                            autor={info.author.name}
-                            price={info.price}
-                            thumbnail={info.thumbnailUrl}
-                        />
-                    ))
+                    courses
+                        ? courses.map((info, k) => (
+                            <CardCurso
+                                key={k}
+                                id={info.id}
+                                title={info.title}
+                                autor={info.author.name}
+                                price={info.price}
+                                thumbnail={info.thumbnailUrl}
+                            />
+                        ))
+                        : null
                 }
             </div>
         </main>
