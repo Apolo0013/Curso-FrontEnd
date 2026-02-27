@@ -99,7 +99,15 @@ O projeto roda localmente e depende do backend correspondente para funcionamento
 Este projeto representa o maior já desenvolvido até o momento, aplicando arquitetura real e integração completa com backend.
 
 Foi fundamental para consolidar conhecimentos em React, TypeScript e organização de aplicações maiores.
+---
+🔗 Integração com Backend
 
+Este projeto depende do backend desenvolvido separadamente:
+
+👉 https://github.com/Apolo0013/Curso-BackEnd
+
+A API é responsável por autenticação, controle de acesso e comunicação com o banco de dados.
+O frontend consome os endpoints fornecidos por esse repositório.
 ---
 
 ## 🔜 Possíveis Melhorias Futuras
